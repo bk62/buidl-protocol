@@ -1,7 +1,7 @@
 {
-  "name": "hardhat-starter-kit",
+  "name": "@bk62/buidl-protocol",
   "version": "1.0.0",
-  "description": "",
+  "description": "Composable and decentralized social fundraising for beginning web3 developers",
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test ./test/unit/*.spec.ts --network hardhat",
@@ -12,7 +12,14 @@
     "coverage": "hardhat coverage --solcoverjs ./.solcover.js",
     "fuzzing": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox"
   },
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bk62/build-protocol"
+  },
+  "bugs": {
+    "url": "https://github.com/bk62/buidl-protocol/issues"
+  },
+  "homepage": "https://github.com/bk62/buidl-protocol#readme",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.10",
     "@nomiclabs/hardhat-etherscan": "^3.0.0",
@@ -47,5 +54,23 @@
   },
   "mocha": {
     "timeout": 10000000
-  }
+  },
+  "license": "AGPL-3.0-only",
+  "author": "BuidlProtocol",
+  "contributors": [
+    "bk62"
+  ],
+  "keywords": [
+    "buidl",
+    "protocol",
+    "funding",
+    "building",
+    "web3",
+    "developers",
+    "educational",
+    "solidity",
+    "evm",
+    "contracts",
+    "core"
+  ]
 }
