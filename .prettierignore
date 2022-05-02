@@ -1,12 +1,12 @@
 node_modules
 artifacts
 cache
-coverage*
+coverage
+typechain-types
 gasReporterOutput.json
 package.json
 img
 .env
-.*
 README.md
 coverage.json
 deployments
