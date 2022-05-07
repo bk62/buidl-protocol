@@ -22,16 +22,7 @@ library Events {
         bool indexed whitelisted,
         uint256 timestamp
     );
-    event BackModuleWhitelisted(
-        address indexed module,
-        bool indexed whitelisted,
-        uint256 timestamp
-    );
-    event InvestModuleWhitelisted(
-        address indexed module,
-        bool indexed whitelisted,
-        uint256 timestamp
-    );
+
     event ProfileCreated(
         uint256 indexed profileId,
         address indexed creator,
@@ -41,6 +32,8 @@ library Events {
         uint256 timestamp
     );
     event DefaultProfileSet(address indexed account, uint256 indexed profileId, uint256 timestamp);
+
+    // Projects
     event ProjectCreated(
         uint256 indexed profileId,
         uint256 indexed projectId,
@@ -49,6 +42,11 @@ library Events {
     );
 
     // Back Profiles
+    event BackModuleWhitelisted(
+        address indexed module,
+        bool indexed whitelisted,
+        uint256 timestamp
+    );
     event BackNFTInitialized(uint256 indexed profileId, uint256 timestamp);
     event BackModuleSet(
         uint256 indexed profileId,
@@ -57,28 +55,26 @@ library Events {
         uint256 timestamp
     );
     event BackNFTDeployed(uint256 indexed profileId, address indexed BackNFT, uint256 timestamp);
-    event Backed(
-        address indexed backer,
-        uint256[] profileIds,
-        bytes[] moduleDatas,
+    event Backed(address indexed backer, uint256 profileId, bytes moduleData, uint256 timestamp);
+
+    // Invest in Projects
+    event InvestModuleWhitelisted(
+        address indexed module,
+        bool indexed whitelisted,
         uint256 timestamp
     );
-
-    // Invest Projects
     event InvestNFTInitialized(uint256 indexed profileId, uint256 indexed pubId, uint256 timestamp);
     event InvestNFTDeployed(
         uint256 indexed profileId,
         uint256 indexed projectId,
-        address indexed sponsorNFT,
+        address indexed investNFT,
         uint256 timestamp
     );
     event Invested(
-        address indexed sponsor,
+        address indexed investor,
         uint256 indexed profileId,
         uint256 indexed projectId,
-        uint256 rootProfileId,
-        uint256 rootProjectId,
-        bytes sponsorModuleData,
+        bytes moduleData,
         uint256 timestamp
     );
     event InvestNFTTransferred(

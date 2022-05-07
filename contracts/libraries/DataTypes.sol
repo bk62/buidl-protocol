@@ -234,6 +234,10 @@ library DataTypes {
         // Apply for a grant/investment via a project
         address applyModule;
         address applyNFT;
+        // Invest in this fund
+        address investInModule;
+        address investInNFT;
+        address investInToken;
         // Got invest from
         address investmentFromModule;
         address investmentFromNFT;
