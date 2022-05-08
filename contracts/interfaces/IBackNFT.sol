@@ -13,7 +13,11 @@ interface IBackNFT {
     /**
      * @notice Initialize, set Hub as minter and save profileId
      */
-    function initialize(uint256 profileId) external;
+    function initialize(
+        uint256 profileId,
+        string calldata name,
+        string calldata symbol
+    ) external;
 
     /**
      * @notice Mint upon `back` action

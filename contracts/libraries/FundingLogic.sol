@@ -31,9 +31,9 @@ library FundingLogic {
         address backer,
         uint256 profileId,
         bytes calldata moduleData,
+        address backNFTImpl,
         mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
-        mapping(bytes32 => uint256) storage _profileIdByHandleHash,
-        address hub
+        mapping(bytes32 => uint256) storage _profileIdByHandleHash
     ) external returns (uint256) {
         string memory handle = _profileById[profileId].handle;
         if (_profileIdByHandleHash[keccak256(bytes(handle))] != profileId)
@@ -43,7 +43,7 @@ library FundingLogic {
         address backNFT = _profileById[profileId].backNFT;
 
         if (backNFT == address(0)) {
-            backNFT = _deployBackNFT(profileId, hub);
+            backNFT = _deployBackNFT(profileId, handle, backNFTImpl);
             _profileById[profileId].backNFT = backNFT;
         }
 
@@ -68,8 +68,7 @@ library FundingLogic {
         address investNFTImpl,
         mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
         mapping(uint256 => mapping(uint256 => DataTypes.ProjectStruct))
-            storage _projectByIdByProfile,
-        address hub
+            storage _projectByIdByProfile
     ) external returns (uint256) {
         // TODO
         // getPointerIfDerivativeProject
@@ -83,8 +82,7 @@ library FundingLogic {
                     profileId,
                     projectId,
                     _profileById[profileId].handle,
-                    investNFTImpl,
-                    hub
+                    investNFTImpl
                 );
                 tokenId = IInvestNFT(investNFT).mint(investor);
             }
@@ -102,8 +100,20 @@ library FundingLogic {
         return tokenId;
     }
 
-    function _deployBackNFT(uint256 profileId, address hub) private returns (address) {
-        address backNFT = address(new BackNFT(hub, profileId));
+    function _deployBackNFT(
+        uint256 profileId,
+        string memory handle,
+        address backNFTImpl
+    ) private returns (address) {
+        address backNFT = Clones.clone(backNFTImpl);
+
+        bytes4 firstBytes = bytes4(bytes(handle));
+        IBackNFT(backNFT).initialize(
+            profileId,
+            string(abi.encodePacked(handle, Constants.BACK_NFT_NAME_SUFFIX)),
+            string(abi.encodePacked(firstBytes, Constants.BACK_NFT_SYMBOL_SUFFIX))
+        );
+
         emit Events.BackNFTDeployed(profileId, backNFT, block.timestamp);
 
         return backNFT;
@@ -113,8 +123,7 @@ library FundingLogic {
         uint256 profileId,
         uint256 projectId,
         string memory handle,
-        address investNFTImpl,
-        address hub
+        address investNFTImpl
     ) private returns (address) {
         address investNFT = Clones.clone(investNFTImpl);
 

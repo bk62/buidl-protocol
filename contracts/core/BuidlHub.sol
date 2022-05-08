@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
-pragma solidity 0.8.10;
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
@@ -190,9 +190,9 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
                 msg.sender,
                 profileId,
                 backModuleData,
+                backNFTImpl,
                 _profileById,
-                _profileIdByHandleHash,
-                address(this)
+                _profileIdByHandleHash
             );
     }
 
@@ -210,8 +210,7 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
                 investModuleData,
                 investNFTImpl,
                 _profileById,
-                _projectByIdByProfile,
-                address(this)
+                _projectByIdByProfile
             );
     }
 
