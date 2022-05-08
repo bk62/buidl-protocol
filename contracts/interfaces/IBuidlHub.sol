@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+
 import {DataTypes} from "../libraries/DataTypes.sol";
 
 /**
@@ -9,7 +11,7 @@ import {DataTypes} from "../libraries/DataTypes.sol";
  *
  * @notice Interface for BuidlHub contract.
  */
-interface IBuidlHub {
+interface IBuidlHub is IERC721 {
     /**
      * @notice Set governance address. Only callable by current governance address.
      *
