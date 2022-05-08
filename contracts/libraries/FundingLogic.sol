@@ -6,6 +6,7 @@ import {DataTypes} from "./DataTypes.sol";
 import {Errors} from "./Errors.sol";
 import {Events} from "./Events.sol";
 import {Constants} from "./Constants.sol";
+import {IBuidlHub} from "../interfaces/IBuidlHub.sol";
 import {IBackNFT} from "../interfaces/IBackNFT.sol";
 import {IBackModule} from "../interfaces/IBackModule.sol";
 import {BackNFT} from "../core/BackNFT.sol";
@@ -49,8 +50,15 @@ library FundingLogic {
 
         uint256 tokenId = IBackNFT(backNFT).mint(backer);
 
+        // Process via back module
+        // if back module is set, send any native currency in tx to module
+        // send to owner wallet otherwise
         if (backModule != address(0)) {
+            _transferFundsTo(backModule, msg.value);
             IBackModule(backModule).process(backer, profileId, moduleData);
+        } else {
+            address profileOwner = IBuidlHub(address(this)).ownerOf(profileId);
+            _transferFundsTo(profileOwner, msg.value);
         }
 
         emit Events.Backed(backer, profileId, moduleData, block.timestamp);
@@ -88,12 +96,16 @@ library FundingLogic {
             }
         }
 
-        IInvestModule(_projectByIdByProfile[profileId][projectId].investModule).process(
-            investor,
-            profileId,
-            projectId,
-            moduleData
-        );
+        // Process via module
+        // if module is set, send any native currency in tx to module
+        // send to owner wallet otherwise
+        address investModule = _projectByIdByProfile[profileId][projectId].investModule;
+        if (investModule != address(0)) {
+            _transferFundsTo(investModule, msg.value);
+            IInvestModule(investModule).process(investor, profileId, projectId, moduleData);
+        } else {
+            _transferFundsTo(IBuidlHub(address(this)).ownerOf(profileId), msg.value);
+        }
 
         _emitInvestedEvent(investor, profileId, projectId, moduleData);
 
@@ -150,5 +162,13 @@ library FundingLogic {
         bytes calldata moduleData
     ) private {
         emit Events.Invested(investor, profileId, projectId, moduleData, block.timestamp);
+    }
+
+    function _transferFundsTo(address recipient, uint256 value) internal {
+        (bool success, ) = payable(recipient).call{value: value}("");
+        if (!success) {
+            revert Errors.FundTransferFailed();
+        }
+        // TODO transfer erc-20s, erc-721s?
     }
 }

@@ -25,4 +25,6 @@ library Errors {
     error TokenDoesNotExist();
 
     error ArrayMismatch();
+
+    error FundTransferFailed();
 }
