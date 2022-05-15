@@ -253,8 +253,8 @@ library DataTypes {
         ProfileType profileType;
         address backModule;
         bytes backModuleInitData;
-        address endorsedByModule;
-        bytes endorsedByModuleInitData;
+        // address endorsedByModule;
+        // bytes endorsedByModuleInitData;
     }
 
     struct CreateProjectData {

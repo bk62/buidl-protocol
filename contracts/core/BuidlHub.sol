@@ -140,9 +140,9 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         unchecked {
             uint256 projectId = ++_profileById[vars.profileId].projectCount;
             BuidlingLogic.createProject(
-                vars.profileId,
-                vars.metadataURI,
+                vars,
                 projectId,
+                _profileProjectIdsByProjectHandleHash,
                 _projectByIdByProfile
             );
             return projectId;
@@ -277,6 +277,20 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         return _profileIdByHandleHash[handleHash];
     }
 
+    /**
+     * @notice Convenience function to get profile by handle
+     */
+    function getProfileByHandle(string calldata handle)
+        external
+        view
+        returns (DataTypes.ProfileStruct memory)
+    {
+        bytes32 handleHash = keccak256(bytes(handle));
+        uint256 profileId = _profileIdByHandleHash[handleHash];
+        if (profileId == 0) revert Errors.ProfileNotFound();
+        return _profileById[profileId];
+    }
+
     /// @inheritdoc IBuidlHub
     function getProfile(uint256 profileId)
         external
@@ -285,6 +299,25 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         returns (DataTypes.ProfileStruct memory)
     {
         return _profileById[profileId];
+    }
+
+    function getProjectIdsByHandle(string calldata handle)
+        external
+        view
+        returns (uint256[2] memory)
+    {
+        bytes32 handleHash = keccak256(bytes(handle));
+        return _profileProjectIdsByProjectHandleHash[handleHash];
+    }
+
+    function getProjectByHandle(string calldata handle)
+        external
+        view
+        returns (DataTypes.ProjectStruct memory)
+    {
+        bytes32 handleHash = keccak256(bytes(handle));
+        uint256[2] storage ids = _profileProjectIdsByProjectHandleHash[handleHash];
+        return _projectByIdByProfile[ids[0]][ids[1]];
     }
 
     /// @inheritdoc IBuidlHub

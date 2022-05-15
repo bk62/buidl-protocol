@@ -27,4 +27,6 @@ library Errors {
     error ArrayMismatch();
 
     error FundTransferFailed();
+
+    error ProfileNotFound();
 }

@@ -7,6 +7,7 @@ import {Errors} from "./Errors.sol";
 import {Events} from "./Events.sol";
 import {Constants} from "./Constants.sol";
 import {IBackModule} from "../interfaces/IBackModule.sol";
+import {IBuidlHub} from "../interfaces/IBuidlHub.sol";
 
 /**
  * @notice Library containing logic for profile and project creation.
@@ -61,14 +62,32 @@ library BuidlingLogic {
     }
 
     function createProject(
-        uint256 profileId,
-        string memory metadataURI,
+        DataTypes.CreateProjectData calldata vars,
         uint256 projectId,
+        mapping(bytes32 => uint256[2]) storage _profileProjectIdsByProjectHandleHash,
         mapping(uint256 => mapping(uint256 => DataTypes.ProjectStruct)) storage _projectIdByProfile
     ) external {
-        _projectIdByProfile[profileId][projectId].metadataURI = metadataURI;
+        _validateHandle(vars.handle);
 
-        emit Events.ProjectCreated(profileId, projectId, metadataURI, block.timestamp);
+        bytes32 handleHash = keccak256(bytes(vars.handle));
+
+        if (
+            keccak256(abi.encodePacked(_profileProjectIdsByProjectHandleHash[handleHash])) !=
+            keccak256(abi.encodePacked([0, 0]))
+        ) revert Errors.HandleTaken();
+        _profileProjectIdsByProjectHandleHash[handleHash] = [vars.profileId, projectId];
+
+        _projectIdByProfile[vars.profileId][projectId].metadataURI = vars.metadataURI;
+        _projectIdByProfile[vars.profileId][projectId].handle = vars.handle;
+
+        emit Events.ProjectCreated(
+            vars.profileId,
+            projectId,
+            IBuidlHub(address(this)).ownerOf(vars.profileId),
+            vars.handle,
+            vars.metadataURI,
+            block.timestamp
+        );
     }
 
     function _validateHandle(string calldata handle) private pure {

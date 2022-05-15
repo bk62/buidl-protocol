@@ -28,7 +28,7 @@ library Events {
         address indexed creator,
         address indexed to,
         string handle,
-        string profileMetadataURI,
+        string metadataURI,
         uint256 timestamp
     );
     event DefaultProfileSet(address indexed account, uint256 indexed profileId, uint256 timestamp);
@@ -37,7 +37,9 @@ library Events {
     event ProjectCreated(
         uint256 indexed profileId,
         uint256 indexed projectId,
-        string projectMetadataURI,
+        address creator,
+        string handle,
+        string metadataURI,
         uint256 timestamp
     );
 
@@ -55,7 +57,12 @@ library Events {
         uint256 timestamp
     );
     event BackNFTDeployed(uint256 indexed profileId, address indexed BackNFT, uint256 timestamp);
-    event Backed(address indexed backer, uint256 profileId, bytes moduleData, uint256 timestamp);
+    event Backed(
+        address indexed backer,
+        uint256 indexed profileId,
+        bytes moduleData,
+        uint256 timestamp
+    );
 
     // Invest in Projects
     event InvestModuleWhitelisted(
