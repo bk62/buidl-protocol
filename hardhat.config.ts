@@ -15,19 +15,19 @@ import "./tasks"
 dotenv.config()
 
 const config: HardhatUserConfig = {
-  // defaultNetwork: "hardhat",
-  // networks: {
-  //   hardhat: {
-  //     chainId: 31337,
-  //   },
-  //   localhost: {
-  //     chainId: 31337,
-  //   }
-  // },
+  defaultNetwork: "hardhat",
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
+    localhost: {
+      chainId: 1337,
+    }
+  },
   solidity: {
     compilers: [
       {
-        version: "0.8.10",
+        version: "0.8.7",
         settings: {
           optimizer: {
             enabled: true,
@@ -37,9 +37,6 @@ const config: HardhatUserConfig = {
             },
           },
         }
-      },
-      {
-        version: "0.8.7",
       }
     ],
   },
