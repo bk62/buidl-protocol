@@ -89,6 +89,12 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         emit Events.InvestModuleWhitelisted(module, whitelist, block.timestamp);
     }
 
+    ///@inheritdoc IBuidlHub
+    function whitelistERC20(address erc20, bool whitelist) external override {
+        _erc20Whitelisted[erc20] = whitelist;
+        emit Events.ERC20Whitelisted(erc20, whitelist, block.timestamp);
+    }
+
     /**
      * Profile owner methods:
      * _______________________
@@ -241,6 +247,11 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     /// @inheritdoc IBuidlHub
     function isInvestModuleWhitelisted(address module) external view override returns (bool) {
         return _investModuleWhitelisted[module];
+    }
+
+    /// @inheritdoc IBuidlHub
+    function isERC20listed(address erc20) external view override returns (bool) {
+        return _erc20Whitelisted[erc20];
     }
 
     /// @inheritdoc IBuidlHub

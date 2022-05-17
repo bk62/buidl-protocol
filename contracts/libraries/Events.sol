@@ -94,4 +94,7 @@ library Events {
         address to,
         uint256 timestamp
     );
+
+    // ERC 20s
+    event ERC20Whitelisted(address indexed erc20, bool indexed whitelisted, uint256 timestamp);
 }

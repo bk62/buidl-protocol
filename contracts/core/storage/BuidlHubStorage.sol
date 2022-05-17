@@ -19,4 +19,7 @@ abstract contract BuidlHubStorage {
 
     uint256 internal _profileCounter;
     address internal _governance;
+
+    // whitelisted ERC-20s
+    mapping(address => bool) internal _erc20Whitelisted;
 }

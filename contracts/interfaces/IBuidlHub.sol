@@ -45,6 +45,11 @@ interface IBuidlHub is IERC721 {
     function whitelistInvestModule(address module, bool whitelist) external;
 
     /**
+     * @notice Set whether an ERC-20 currency is whitelisted.
+     */
+    function whitelistERC20(address erc20, bool whitelist) external;
+
+    /**
      * @notice Create a profile.
      *
      * @param vars `CreateProfileData` struct.
@@ -140,6 +145,11 @@ interface IBuidlHub is IERC721 {
      * @notice Get whether an invest module is whitelisted.
      */
     function isInvestModuleWhitelisted(address module) external view returns (bool);
+
+    /**
+     * @notice Get whether an erc-20 currency is whitelisted.
+     */
+    function isERC20listed(address erc20) external view returns (bool);
 
     /**
      * @notice Get the default profile for an address.
