@@ -78,19 +78,19 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     }
 
     ///@inheritdoc IBuidlHub
-    function whitelistBackModule(address module, bool whitelist) external override {
+    function whitelistBackModule(address module, bool whitelist) external override onlyGov {
         _backModuleWhitelisted[module] = whitelist;
         emit Events.BackModuleWhitelisted(module, whitelist, block.timestamp);
     }
 
     ///@inheritdoc IBuidlHub
-    function whitelistInvestModule(address module, bool whitelist) external override {
+    function whitelistInvestModule(address module, bool whitelist) external override onlyGov {
         _investModuleWhitelisted[module] = whitelist;
         emit Events.InvestModuleWhitelisted(module, whitelist, block.timestamp);
     }
 
     ///@inheritdoc IBuidlHub
-    function whitelistERC20(address erc20, bool whitelist) external override {
+    function whitelistERC20(address erc20, bool whitelist) external override onlyGov {
         _erc20Whitelisted[erc20] = whitelist;
         emit Events.ERC20Whitelisted(erc20, whitelist, block.timestamp);
     }
