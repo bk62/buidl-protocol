@@ -24,19 +24,13 @@ library DataTypes {
     enum ProfileType {
         Individual,
         Team,
-        Organization,
         Startup,
-        Company,
         NonProfit,
         ProtoDAO,
         DAO,
-        Community,
-        Party,
         Anonymous,
-        Psuedonymous,
         MadScientist,
         SatanicCult,
-        Visionary,
         Balaji
     }
 
@@ -44,13 +38,10 @@ library DataTypes {
      * @notice Project size enum
      */
     enum ProjectSize {
-        Nano,
-        Micro,
+        Tiny,
         Small,
         Medium,
         Large,
-        Mega,
-        Giga,
         GoogleKiller,
         LandOnMars,
         DeathStar
@@ -77,8 +68,7 @@ library DataTypes {
         // Start something
         ProtoDAO,
         Startup,
-        NonProfit,
-        ForProfit
+        NonProfit
     }
 
     /**
@@ -170,7 +160,7 @@ library DataTypes {
         ProfileType profileType;
         string handle;
         uint256 projectCount;
-        uint256 fundCount;
+        // uint256 fundCount;
         string metadataURI;
         // Actions:
         // Module/NFT for when someone backs this profile:
@@ -178,11 +168,11 @@ library DataTypes {
         address backNFT;
         // Module/NFT when this profile endorses someone:
         // Opposite of back -- the endorsed profile gets the endorsement NFT
-        address endorsedByModule;
-        address endorsedByNFT;
+        // address endorsedByModule;
+        // address endorsedByNFT;
         // TODO struct with subscores
         // store history
-        uint256 reputationScore;
+        // uint256 reputationScore;
     }
 
     /**
