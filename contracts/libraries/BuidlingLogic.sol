@@ -29,12 +29,17 @@ library BuidlingLogic {
         _profileById[profileId].handle = vars.handle;
         _profileById[profileId].metadataURI = vars.metadataURI;
 
+        // TODO
+        // backNFTURI
+        // back module
+
         emit Events.ProfileCreated(
             profileId,
             msg.sender,
             vars.to,
             vars.handle,
             vars.metadataURI,
+            abi.encode(vars.profileType, vars.backModule),
             block.timestamp
         );
     }
@@ -86,6 +91,7 @@ library BuidlingLogic {
             IBuidlHub(address(this)).ownerOf(vars.profileId),
             vars.handle,
             vars.metadataURI,
+            abi.encode(vars.projectType, vars.projectState, vars.projectSize),
             block.timestamp
         );
     }

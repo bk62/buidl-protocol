@@ -29,6 +29,7 @@ library Events {
         address indexed to,
         string handle,
         string metadataURI,
+        bytes encodedMetadata,
         uint256 timestamp
     );
     event DefaultProfileSet(address indexed account, uint256 indexed profileId, uint256 timestamp);
@@ -37,9 +38,10 @@ library Events {
     event ProjectCreated(
         uint256 indexed profileId,
         uint256 indexed projectId,
-        address creator,
+        address indexed creator,
         string handle,
         string metadataURI,
+        bytes encodedMetadata,
         uint256 timestamp
     );
 
