@@ -42,10 +42,14 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         address backNFTImpl_,
         address investNFTImpl_
     ) ERC721(name, symbol) {
-        _setState(DataTypes.ProtocolState.Paused);
-        _setGovernance(newGovernance);
+        if (backNFTImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
+        if (investNFTImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
+
         backNFTImpl = backNFTImpl_;
         investNFTImpl = investNFTImpl_;
+
+        _setState(DataTypes.ProtocolState.Paused);
+        _setGovernance(newGovernance);
     }
 
     /**
