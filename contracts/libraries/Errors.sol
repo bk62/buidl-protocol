@@ -30,4 +30,6 @@ library Errors {
     error FundTransferFailed();
 
     error ProfileNotFound();
+    error InvalidERC20();
+    error AlreadyExists();
 }

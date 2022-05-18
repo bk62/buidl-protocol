@@ -29,6 +29,52 @@ library FundingLogic {
     using SafeERC20 for IERC20;
 
     /**
+     * @notice Create yield trust
+     */
+    function createYieldTrust(
+        DataTypes.YieldTrustStruct calldata trust,
+        mapping(bytes32 => DataTypes.YieldTrustStruct) storage _yieldTrustByProfileCurrencyHash,
+        mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
+        mapping(address => bool) storage _erc20Whitelisted
+    ) external {
+        // check profile exists
+        if (
+            trust.profileId == 0 ||
+            // convert handle to bytes and check if empty
+            bytes(_profileById[trust.profileId].handle).length == 0
+        ) {
+            revert Errors.ProfileNotFound();
+        }
+
+        // check currency
+        if (trust.currency == address(0) || !_erc20Whitelisted[trust.currency]) {
+            revert Errors.InvalidERC20();
+        }
+
+        bytes32 ytHash = getYieldTrustHash(trust.profileId, trust.currency);
+
+        // check trust does not already exist
+        if (_yieldTrustByProfileCurrencyHash[ytHash].profileId != 0) {
+            // already exists
+            revert Errors.AlreadyExists();
+        }
+
+        // store trust by hash of (profileId, currency addr)
+        _yieldTrustByProfileCurrencyHash[ytHash] = trust;
+
+        // TODO create vault
+
+        // emit event
+        emit Events.YieldTrustCreated(
+            trust.profileId,
+            trust.currency,
+            msg.sender, // creator
+            IBuidlHub(address(this)).ownerOf(trust.profileId), // recipient
+            block.timestamp
+        );
+    }
+
+    /**
      * @notice Back profiles.
      */
     function back(
@@ -223,5 +269,9 @@ library FundingLogic {
 
             IERC20(currency).safeTransferFrom(msg.sender, recipient, amount);
         }
+    }
+
+    function getYieldTrustHash(uint256 profileId, address currency) public pure returns (bytes32) {
+        return keccak256(abi.encodePacked(profileId, currency));
     }
 }

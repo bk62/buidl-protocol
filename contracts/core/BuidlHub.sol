@@ -159,6 +159,22 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         }
     }
 
+    /// @inheritdoc IBuidlHub
+    function createYieldTrust(DataTypes.YieldTrustStruct calldata trust)
+        external
+        override
+        whenFundingEnabled
+    {
+        // _validateCallerIsProfileOwner(trust.profileId); // anyone can create
+
+        FundingLogic.createYieldTrust(
+            trust,
+            _yieldTrustByProfileCurrencyHash,
+            _profileById,
+            _erc20Whitelisted
+        );
+    }
+
     // TODO
     /// @inheritdoc IBuildHub
     // function setProfileImageURI(uint256 profileId, string calldata imageURI)
@@ -345,6 +361,17 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         returns (DataTypes.ProjectStruct memory)
     {
         return _projectByIdByProfile[profileId][projectId];
+    }
+
+    /// @inheritdoc IBuidlHub
+    function getYieldTrust(uint256 profileId, address currency)
+        external
+        view
+        override
+        returns (DataTypes.YieldTrustStruct memory)
+    {
+        return
+            _yieldTrustByProfileCurrencyHash[FundingLogic.getYieldTrustHash(profileId, currency)];
     }
 
     // // TODO

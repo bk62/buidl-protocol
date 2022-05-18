@@ -203,6 +203,12 @@ library DataTypes {
         DAOFactoryDetails daoFactoryDetails;
     }
 
+    struct YieldTrustStruct {
+        uint256 profileId;
+        address currency; // erc 20
+        address vault; // vault address
+    }
+
     /**
      * @notice A struct containing venture fund data
      *

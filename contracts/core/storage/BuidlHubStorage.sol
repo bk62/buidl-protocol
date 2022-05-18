@@ -15,6 +15,8 @@ abstract contract BuidlHubStorage {
     mapping(uint256 => mapping(uint256 => DataTypes.ProjectStruct)) internal _projectByIdByProfile;
     mapping(bytes32 => uint256[2]) internal _profileProjectIdsByProjectHandleHash;
 
+    mapping(bytes32 => DataTypes.YieldTrustStruct) internal _yieldTrustByProfileCurrencyHash;
+
     mapping(address => uint256) internal _defaultProfileByAddress;
 
     uint256 internal _profileCounter;

@@ -78,6 +78,13 @@ interface IBuidlHub is IERC721 {
     function createProject(DataTypes.CreateProjectData calldata vars) external returns (uint256);
 
     /**
+     * @notice Create a Yield Trust ERC-4626 compatible vault
+     *
+     * @param trust `YieldTrustStruct` struct.
+     */
+    function createYieldTrust(DataTypes.YieldTrustStruct calldata trust) external;
+
+    /**
      * TODO
      */
     // function setProfileMetadataURI(uint256 profileId, string calldata metadataURI) external;
@@ -238,6 +245,19 @@ interface IBuidlHub is IERC721 {
         external
         view
         returns (DataTypes.ProjectStruct memory);
+
+    /**
+     * @notice Get the data struct for a given Yield Trust.
+     *
+     * @param profileId Id of the profile that is the yield recipient.
+     * @param currency Address of the (whitelisted) ERC-20 that is the underlying asset.
+     *
+     * @return YieldTrustSTruct Yield trust struct
+     */
+    function getYieldTrust(uint256 profileId, address currency)
+        external
+        view
+        returns (DataTypes.YieldTrustStruct memory);
 
     /**
      * @notice Get back NFT impl addr

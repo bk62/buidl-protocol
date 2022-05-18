@@ -101,4 +101,13 @@ library Events {
 
     // ERC 20s
     event ERC20Whitelisted(address indexed erc20, bool indexed whitelisted, uint256 timestamp);
+
+    // Yield trusts
+    event YieldTrustCreated(
+        uint256 indexed profileId,
+        address indexed erc20,
+        address indexed recipient,
+        address creator,
+        uint256 timestamp
+    );
 }
