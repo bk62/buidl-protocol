@@ -90,16 +90,21 @@ interface IBuidlHub is IERC721 {
      */
 
     // Back a profile
+
     /**
-     * @notice Back a profile
+     * @notice Back a profile with ERC 20s and/or native currency
      * @param profileId Token id of profile
      * @param backModuleData Data to pass to back module
+     * @param erc20s Addresses of ERC-20s
+     * @param amounts Amounts of ERC-20s, corresponding to the same position in the `erc20s` argument
      * @return uint256 Token id of issued back NFT
      */
-    function back(uint256 profileId, bytes calldata backModuleData)
-        external
-        payable
-        returns (uint256);
+    function back(
+        uint256 profileId,
+        bytes calldata backModuleData,
+        address[] calldata erc20s,
+        uint256[] calldata amounts
+    ) external payable returns (uint256);
 
     /**
      * @notice Emit a Back NFT transfer event
@@ -113,17 +118,22 @@ interface IBuidlHub is IERC721 {
     // ) external;
 
     // Invest in a project
+
     /**
-     * @notice Invest in a project
+     * @notice Invest in a project with ERC 20s and/or native currency
      * @param profileId Profile that created the project
      * @param projectId Project id
      * @param investModuleData Data to pass to invest module
+     * @param erc20s Addresses of ERC-20s
+     * @param amounts Amounts of ERC-20s, corresponding to the same position in the `erc20s` argument
      * @return uint256 Token if of issued invest NFT
      */
     function invest(
         uint256 profileId,
         uint256 projectId,
-        bytes calldata investModuleData
+        bytes calldata investModuleData,
+        address[] calldata erc20s,
+        uint256[] calldata amounts
     ) external payable returns (uint256);
 
     /**

@@ -16,6 +16,8 @@ import {InvestNFT} from "../core/InvestNFT.sol";
 
 import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 /**
  * @title FundingLogic
@@ -24,6 +26,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
  */
 library FundingLogic {
     using Strings for uint256;
+    using SafeERC20 for IERC20;
 
     /**
      * @notice Back profiles.
@@ -33,35 +36,37 @@ library FundingLogic {
         uint256 profileId,
         bytes calldata moduleData,
         address backNFTImpl,
-        mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
-        mapping(bytes32 => uint256) storage _profileIdByHandleHash
+        address[] calldata erc20s,
+        uint256[] calldata amounts,
+        mapping(uint256 => DataTypes.ProfileStruct) storage _profileById
     ) external returns (uint256) {
-        string memory handle = _profileById[profileId].handle;
-        if (_profileIdByHandleHash[keccak256(bytes(handle))] != profileId)
-            revert Errors.TokenDoesNotExist();
+        if (erc20s.length != amounts.length) revert Errors.ArrayMismatch();
 
-        address backModule = _profileById[profileId].backModule;
         address backNFT = _profileById[profileId].backNFT;
 
         if (backNFT == address(0)) {
-            backNFT = _deployBackNFT(profileId, handle, backNFTImpl);
+            backNFT = _deployBackNFT(profileId, _profileById[profileId].handle, backNFTImpl);
             _profileById[profileId].backNFT = backNFT;
         }
 
         uint256 tokenId = IBackNFT(backNFT).mint(backer);
 
+        // Avoid stack too deep
+
+        address backModule = _profileById[profileId].backModule;
+
         // Process via back module
         // if back module is set, send any native currency in tx to module
         // send to owner wallet otherwise
         if (backModule != address(0)) {
-            _transferFundsTo(backModule, msg.value);
+            _transferFundsTo(backModule, msg.value, erc20s, amounts);
             IBackModule(backModule).process(backer, profileId, moduleData);
         } else {
             address profileOwner = IBuidlHub(address(this)).ownerOf(profileId);
-            _transferFundsTo(profileOwner, msg.value);
+            _transferFundsTo(profileOwner, msg.value, erc20s, amounts);
         }
 
-        emit Events.Backed(backer, profileId, moduleData, block.timestamp);
+        emit Events.Backed(backer, profileId, moduleData, erc20s, amounts, block.timestamp);
         return tokenId;
     }
 
@@ -69,47 +74,75 @@ library FundingLogic {
      * @notice Invest in projects
      */
     function invest(
-        address investor,
-        uint256 profileId,
-        uint256 projectId,
+        DataTypes.ProjectInvestor memory projectInvestor,
         bytes calldata moduleData,
         address investNFTImpl,
+        address[] calldata erc20s,
+        uint256[] calldata amounts,
         mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
         mapping(uint256 => mapping(uint256 => DataTypes.ProjectStruct))
             storage _projectByIdByProfile
-    ) external returns (uint256) {
-        // TODO
-        // getPointerIfDerivativeProject
+    ) external returns (uint256 tokenId) {
+        if (erc20s.length != amounts.length) revert Errors.ArrayMismatch();
 
-        uint256 tokenId;
-        // Avoid stack too deep
-        {
-            address investNFT = _projectByIdByProfile[profileId][projectId].investNFT;
-            if (investNFT == address(0)) {
-                investNFT = _deployInvestNFT(
-                    profileId,
-                    projectId,
-                    _profileById[profileId].handle,
-                    investNFTImpl
-                );
-                tokenId = IInvestNFT(investNFT).mint(investor);
-            }
-        }
+        tokenId = _deployAndMintInvestNFT(
+            projectInvestor,
+            _profileById[projectInvestor.profileId].handle,
+            _projectByIdByProfile[projectInvestor.profileId][projectInvestor.projectId].investNFT,
+            investNFTImpl
+        );
 
+        // _processInvestPayments(investor, profileId, projectId, moduleData, investModule);
         // Process via module
         // if module is set, send any native currency in tx to module
         // send to owner wallet otherwise
-        address investModule = _projectByIdByProfile[profileId][projectId].investModule;
+        address investModule = _projectByIdByProfile[projectInvestor.profileId][
+            projectInvestor.projectId
+        ].investModule;
         if (investModule != address(0)) {
-            _transferFundsTo(investModule, msg.value);
-            IInvestModule(investModule).process(investor, profileId, projectId, moduleData);
+            _transferFundsTo(investModule, msg.value, erc20s, amounts);
+            IInvestModule(investModule).process(
+                projectInvestor.investor,
+                projectInvestor.profileId,
+                projectInvestor.projectId,
+                moduleData
+            );
         } else {
-            _transferFundsTo(IBuidlHub(address(this)).ownerOf(profileId), msg.value);
+            _transferFundsTo(
+                IBuidlHub(address(this)).ownerOf(projectInvestor.profileId),
+                msg.value,
+                erc20s,
+                amounts
+            );
         }
 
-        _emitInvestedEvent(investor, profileId, projectId, moduleData);
+        _emitInvestedEvent(
+            projectInvestor.investor,
+            projectInvestor.profileId,
+            projectInvestor.projectId,
+            moduleData,
+            erc20s,
+            amounts
+        );
 
         return tokenId;
+    }
+
+    function _deployAndMintInvestNFT(
+        DataTypes.ProjectInvestor memory projectInvestor,
+        string memory handle,
+        address investNFT,
+        address investNFTImpl
+    ) internal returns (uint256 tokenId) {
+        if (investNFT == address(0)) {
+            investNFT = _deployInvestNFT(
+                projectInvestor.profileId,
+                projectInvestor.projectId,
+                handle,
+                investNFTImpl
+            );
+        }
+        tokenId = IInvestNFT(investNFT).mint(projectInvestor.investor);
     }
 
     function _deployBackNFT(
@@ -159,16 +192,36 @@ library FundingLogic {
         address investor,
         uint256 profileId,
         uint256 projectId,
-        bytes calldata moduleData
+        bytes calldata moduleData,
+        address[] calldata erc20s,
+        uint256[] calldata amounts
     ) private {
-        emit Events.Invested(investor, profileId, projectId, moduleData, block.timestamp);
+        emit Events.Invested(
+            investor,
+            profileId,
+            projectId,
+            moduleData,
+            erc20s,
+            amounts,
+            block.timestamp
+        );
     }
 
-    function _transferFundsTo(address recipient, uint256 value) internal {
+    function _transferFundsTo(
+        address recipient,
+        uint256 value,
+        address[] calldata erc20s,
+        uint256[] calldata amounts
+    ) internal {
         (bool success, ) = payable(recipient).call{value: value}("");
         if (!success) {
             revert Errors.FundTransferFailed();
         }
-        // TODO transfer erc-20s, erc-721s?
+        for (uint256 i = 0; i < erc20s.length; ) {
+            address currency = erc20s[i];
+            uint256 amount = amounts[i];
+
+            IERC20(currency).safeTransferFrom(msg.sender, recipient, amount);
+        }
     }
 }

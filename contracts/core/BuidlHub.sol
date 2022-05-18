@@ -188,21 +188,21 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
      */
 
     /// @inheritdoc IBuidlHub
-    function back(uint256 profileId, bytes calldata backModuleData)
-        external
-        payable
-        override
-        whenFundingEnabled
-        returns (uint256)
-    {
+    function back(
+        uint256 profileId,
+        bytes calldata backModuleData,
+        address[] calldata erc20s,
+        uint256[] calldata amounts
+    ) external payable override whenFundingEnabled returns (uint256) {
         return
             FundingLogic.back(
                 msg.sender,
                 profileId,
                 backModuleData,
                 backNFTImpl,
-                _profileById,
-                _profileIdByHandleHash
+                erc20s,
+                amounts,
+                _profileById
             );
     }
 
@@ -210,15 +210,17 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     function invest(
         uint256 profileId,
         uint256 projectId,
-        bytes calldata investModuleData
+        bytes calldata investModuleData,
+        address[] calldata erc20s,
+        uint256[] calldata amounts
     ) external payable override whenFundingEnabled returns (uint256) {
         return
             FundingLogic.invest(
-                msg.sender,
-                profileId,
-                projectId,
+                DataTypes.ProjectInvestor(profileId, projectId, msg.sender),
                 investModuleData,
                 investNFTImpl,
+                erc20s,
+                amounts,
                 _profileById,
                 _projectByIdByProfile
             );

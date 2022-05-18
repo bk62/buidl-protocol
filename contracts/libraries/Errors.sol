@@ -14,6 +14,7 @@ library Errors {
     error NotGovernance();
     error NotProfileOwner();
 
+    // State errors
     error Paused();
     error BuidlingPaused();
     error FundingPaused();

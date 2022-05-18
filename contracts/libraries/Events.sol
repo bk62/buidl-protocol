@@ -63,6 +63,8 @@ library Events {
         address indexed backer,
         uint256 indexed profileId,
         bytes moduleData,
+        address[] erc20s,
+        uint256[] amounts,
         uint256 timestamp
     );
 
@@ -84,6 +86,8 @@ library Events {
         uint256 indexed profileId,
         uint256 indexed projectId,
         bytes moduleData,
+        address[] erc20s,
+        uint256[] amounts,
         uint256 timestamp
     );
     event InvestNFTTransferred(

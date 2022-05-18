@@ -269,4 +269,12 @@ library DataTypes {
         address investmentFromModule;
         bytes investmentFromModuleInitData;
     }
+
+    // Helpers
+
+    struct ProjectInvestor {
+        uint256 profileId;
+        uint256 projectId;
+        address investor;
+    }
 }
