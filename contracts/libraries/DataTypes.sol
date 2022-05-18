@@ -42,6 +42,7 @@ library DataTypes {
         Small,
         Medium,
         Large,
+        Giga,
         GoogleKiller,
         LandOnMars,
         DeathStar
@@ -53,16 +54,13 @@ library DataTypes {
     enum ProjectType {
         // Software
         Tool,
-        Toy,
         Prototype,
-        Buidl,
+        App,
+        Platform,
         // Art
         Art,
-        NFT,
-        Music,
         // Greater good
         PublicGood,
-        Utopian,
         // Greater evil
         WorldDomination,
         // Start something
