@@ -10,6 +10,7 @@ library Errors {
 
     error ProfileCreatorNotWhitelisted();
     error BackModuleNotWhitelisted();
+    error InvestModuleNotWhitelisted();
 
     error NotGovernance();
     error NotProfileOwner();
@@ -32,4 +33,5 @@ library Errors {
     error ProfileNotFound();
     error InvalidERC20();
     error AlreadyExists();
+    error NotAllowed();
 }

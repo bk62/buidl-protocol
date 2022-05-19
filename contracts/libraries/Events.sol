@@ -30,6 +30,7 @@ library Events {
         string handle,
         string metadataURI,
         bytes encodedMetadata,
+        bytes backModuleReturnData,
         uint256 timestamp
     );
     event DefaultProfileSet(address indexed account, uint256 indexed profileId, uint256 timestamp);
@@ -42,6 +43,7 @@ library Events {
         string handle,
         string metadataURI,
         bytes encodedMetadata,
+        bytes investModuleReturnData,
         uint256 timestamp
     );
 
@@ -110,4 +112,7 @@ library Events {
         address creator,
         uint256 timestamp
     );
+
+    // Modules
+    event ModuleBaseConstructed(address hub, uint256 timestamp);
 }

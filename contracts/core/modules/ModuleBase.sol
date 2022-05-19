@@ -20,6 +20,6 @@ abstract contract ModuleBase {
     constructor(address hub_) {
         if (hub_ == address(0)) revert Errors.ConstructorParamsInvalid();
         hub = hub_;
-        // TODO event?
+        emit Events.ModuleBaseConstructed(hub_, block.timestamp);
     }
 }

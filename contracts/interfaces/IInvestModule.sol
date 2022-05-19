@@ -11,9 +11,11 @@ interface IInvestModule {
     /**
      * @notice Initialize mod. Called once only.
      */
-    function initializeModule(uint256 profileId, bytes calldata data)
-        external
-        returns (bytes memory);
+    function initializeModule(
+        uint256 profileId,
+        uint256 projectId,
+        bytes calldata data
+    ) external returns (bytes memory);
 
     /**
      * @notice Process action. Called from Hub only.
@@ -37,8 +39,8 @@ interface IInvestModule {
     ) external;
 
     /**
-     * @notice Whether an account is a current backer.
-     * TODO: Meant to replace check on backer NFT ownership?
+     * @notice Whether an account is a current investor.
+     * TODO: Meant to replace check on investor NFT ownership?
      */
     function isInvestor(
         uint256 profileId,

@@ -112,7 +112,13 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         unchecked {
             uint256 profileId = ++_profileCounter;
             _safeMint(vars.to, profileId);
-            BuidlingLogic.createProfile(vars, profileId, _profileIdByHandleHash, _profileById);
+            BuidlingLogic.createProfile(
+                vars,
+                profileId,
+                _profileIdByHandleHash,
+                _profileById,
+                _backModuleWhitelisted
+            );
             return profileId;
         }
     }
@@ -153,7 +159,8 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
                 vars,
                 projectId,
                 _profileProjectIdsByProjectHandleHash,
-                _projectByIdByProfile
+                _projectByIdByProfile,
+                _investModuleWhitelisted
             );
             return projectId;
         }
