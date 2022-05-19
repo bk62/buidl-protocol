@@ -379,20 +379,10 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
 
     // }
 
-    // TODO
-    /// @inheritdoc IBuidlHub
-    // function tokenURI(uint256 projectId) public view override returns (string memory) {
-    //     // TODO
-    //     // need a spec for IPFS metadata
-    //     // need a way to merge w/ IPFS metadata
-    //     return
-    //         ProfileTokenURILogic.getProfileTokenURI(
-    //             profileId,
-    //             ownerOf(profileId),
-    //             _profileById[tokenId].handle,
-    //             _profileById[tokenId].metadataURI
-    //         );
-    // }
+    /// @inheritdoc IERC721Metadata
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        return _profileById[tokenId].metadataURI;
+    }
 
     /// @inheritdoc IBuidlHub
     function getBackModule(uint256 profileId) public view override returns (address) {
