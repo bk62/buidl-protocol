@@ -405,6 +405,11 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     }
 
     /// @inheritdoc IBuidlHub
+    function getBackNFTURI(uint256 profileId) external view override returns (string memory) {
+        return _profileById[profileId].metadataURI;
+    }
+
+    /// @inheritdoc IBuidlHub
     function getInvestModule(uint256 profileId, uint256 projectId)
         public
         view
@@ -422,6 +427,16 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         returns (address)
     {
         return _projectByIdByProfile[profileId][projectId].investNFT;
+    }
+
+    /// @inheritdoc IBuidlHub
+    function getInvestNFTURI(uint256 profileId, uint256 projectId)
+        external
+        view
+        override
+        returns (string memory)
+    {
+        return _projectByIdByProfile[profileId][projectId].metadataURI;
     }
 
     /// @inheritdoc IBuidlHub
