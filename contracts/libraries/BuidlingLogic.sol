@@ -136,6 +136,7 @@ library BuidlingLogic {
             storage _projectByIdByProfile,
         mapping(address => bool) storage _investModuleWhitelisted
     ) private returns (bytes memory) {
+        if (investModule == address(0)) return new bytes(0);
         if (!_investModuleWhitelisted[investModule]) revert Errors.InvestModuleNotWhitelisted();
         _projectByIdByProfile[profileId][projectId].investModule = investModule;
         return
