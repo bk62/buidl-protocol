@@ -19,6 +19,8 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
+// import "hardhat/console.sol";
+
 /**
  * @title FundingLogic
  *
@@ -88,6 +90,23 @@ library FundingLogic {
     ) external returns (uint256) {
         if (erc20s.length != amounts.length) revert Errors.ArrayMismatch();
 
+        {
+            if (msg.value == 0) {
+                bool allZero = true;
+                for (uint256 i = 0; i < amounts.length; ) {
+                    if (amounts[i] != 0) {
+                        allZero = false;
+                        break;
+                    }
+                    unchecked {
+                        i++;
+                    }
+                }
+                // all amounts are = 0
+                if (allZero) revert Errors.ZeroAmounts();
+            }
+        }
+
         address backNFT = _profileById[profileId].backNFT;
 
         if (backNFT == address(0)) {
@@ -112,7 +131,16 @@ library FundingLogic {
             _transferFundsTo(profileOwner, msg.value, erc20s, amounts);
         }
 
-        emit Events.Backed(backer, profileId, moduleData, erc20s, amounts, block.timestamp);
+        emit Events.Backed(
+            backer,
+            profileId,
+            IBuidlHub(address(this)).ownerOf(profileId), // TODO cache
+            moduleData,
+            msg.value,
+            erc20s,
+            amounts,
+            block.timestamp
+        );
         return tokenId;
     }
 
@@ -167,6 +195,7 @@ library FundingLogic {
             projectInvestor.profileId,
             projectInvestor.projectId,
             moduleData,
+            msg.value,
             erc20s,
             amounts
         );
@@ -239,6 +268,7 @@ library FundingLogic {
         uint256 profileId,
         uint256 projectId,
         bytes calldata moduleData,
+        uint256 value,
         address[] calldata erc20s,
         uint256[] calldata amounts
     ) private {
@@ -246,7 +276,10 @@ library FundingLogic {
             investor,
             profileId,
             projectId,
+            // TODO cache, calling ownerOF here instead of in invest method to avoid stack too deep error
+            IBuidlHub(address(this)).ownerOf(profileId),
             moduleData,
+            value,
             erc20s,
             amounts,
             block.timestamp
@@ -259,15 +292,19 @@ library FundingLogic {
         address[] calldata erc20s,
         uint256[] calldata amounts
     ) internal {
-        (bool success, ) = payable(recipient).call{value: value}("");
-        if (!success) {
-            revert Errors.FundTransferFailed();
+        if (value != 0) {
+            (bool success, ) = payable(recipient).call{value: value}("");
+            if (!success) {
+                revert Errors.FundTransferFailed();
+            }
         }
         for (uint256 i = 0; i < erc20s.length; ) {
             address currency = erc20s[i];
             uint256 amount = amounts[i];
-
             IERC20(currency).safeTransferFrom(msg.sender, recipient, amount);
+            unchecked {
+                i++;
+            }
         }
     }
 

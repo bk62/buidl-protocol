@@ -34,4 +34,6 @@ library Errors {
     error InvalidERC20();
     error AlreadyExists();
     error NotAllowed();
+
+    error ZeroAmounts();
 }

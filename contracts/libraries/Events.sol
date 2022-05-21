@@ -64,7 +64,9 @@ library Events {
     event Backed(
         address indexed backer,
         uint256 indexed profileId,
+        address indexed profileOwner,
         bytes moduleData,
+        uint256 value,
         address[] erc20s,
         uint256[] amounts,
         uint256 timestamp
@@ -87,7 +89,9 @@ library Events {
         address indexed investor,
         uint256 indexed profileId,
         uint256 indexed projectId,
+        address profileOwner,
         bytes moduleData,
+        uint256 value,
         address[] erc20s,
         uint256[] amounts,
         uint256 timestamp
