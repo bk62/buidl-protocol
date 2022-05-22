@@ -2,6 +2,11 @@
 
 pragma solidity ^0.8.0;
 
+import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+
 import {DataTypes} from "./DataTypes.sol";
 import {Errors} from "./Errors.sol";
 import {Events} from "./Events.sol";
@@ -13,11 +18,7 @@ import {BackNFT} from "../core/BackNFT.sol";
 import {IInvestNFT} from "../interfaces/IInvestNFT.sol";
 import {IInvestModule} from "../interfaces/IInvestModule.sol";
 import {InvestNFT} from "../core/InvestNFT.sol";
-
-import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "../defi/IYieldTrustVault.sol";
 
 // import "hardhat/console.sol";
 
@@ -34,10 +35,12 @@ library FundingLogic {
      * @notice Create yield trust
      */
     function createYieldTrust(
-        DataTypes.YieldTrustStruct calldata trust,
+        DataTypes.YieldTrustStruct memory trust,
         mapping(bytes32 => DataTypes.YieldTrustStruct) storage _yieldTrustByProfileCurrencyHash,
         mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
-        mapping(address => bool) storage _erc20Whitelisted
+        mapping(address => bool) storage _erc20Whitelisted,
+        address ytVaultImpl,
+        address yieldSource
     ) external {
         // check profile exists
         if (
@@ -61,10 +64,16 @@ library FundingLogic {
             revert Errors.AlreadyExists();
         }
 
+        trust.vault = _deployYTVault(
+            ytVaultImpl,
+            _profileById[trust.profileId].handle,
+            trust.profileId,
+            trust.currency,
+            yieldSource
+        );
+
         // store trust by hash of (profileId, currency addr)
         _yieldTrustByProfileCurrencyHash[ytHash] = trust;
-
-        // TODO create vault
 
         // emit event
         emit Events.YieldTrustCreated(
@@ -310,5 +319,40 @@ library FundingLogic {
 
     function getYieldTrustHash(uint256 profileId, address currency) public pure returns (bytes32) {
         return keccak256(abi.encodePacked(profileId, currency));
+    }
+
+    function _deployYTVault(
+        address vaultImpl,
+        string memory handle,
+        uint256 profileId,
+        address currency,
+        address yieldSource
+    ) internal returns (address) {
+        address vault = Clones.clone(vaultImpl);
+
+        bytes4 firstBytes = bytes4(bytes(handle));
+
+        string memory name = string(
+            abi.encodePacked(handle, Constants.YIELD_TRUST_VAULT_NAME_INFIX, profileId.toString())
+        );
+        string memory symbol = string(
+            abi.encodePacked(
+                firstBytes,
+                Constants.YIELD_TRUST_VAULT_SYMBOL_INFIX,
+                profileId.toString()
+            )
+        );
+
+        IYieldTrustVault(vault).initialize(profileId, currency, yieldSource, name, symbol);
+
+        emit Events.YieldSourceVaultDeployed(
+            profileId,
+            currency,
+            vault,
+            yieldSource,
+            block.timestamp
+        );
+
+        return vault;
     }
 }

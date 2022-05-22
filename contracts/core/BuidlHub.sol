@@ -26,6 +26,7 @@ import {BuidlHubStorage} from "./storage/BuidlHubStorage.sol";
 contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     address internal immutable backNFTImpl;
     address internal immutable investNFTImpl;
+    address internal immutable yieldTrustVaultImpl;
 
     /**
      * @dev Modifier to revert unless called by governance address.
@@ -40,13 +41,16 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         string memory symbol,
         address newGovernance,
         address backNFTImpl_,
-        address investNFTImpl_
+        address investNFTImpl_,
+        address yieldTrustVaultImpl_
     ) ERC721(name, symbol) {
         if (backNFTImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
         if (investNFTImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
+        if (yieldTrustVaultImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
 
         backNFTImpl = backNFTImpl_;
         investNFTImpl = investNFTImpl_;
+        yieldTrustVaultImpl = yieldTrustVaultImpl_;
 
         _setState(DataTypes.ProtocolState.Paused);
         _setGovernance(newGovernance);
@@ -93,6 +97,12 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     function whitelistERC20(address erc20, bool whitelist) external override onlyGov {
         _erc20Whitelisted[erc20] = whitelist;
         emit Events.ERC20Whitelisted(erc20, whitelist, block.timestamp);
+    }
+
+    ///@inheritdoc IBuidlHub
+    function setYieldSource(address yieldSource_) external override onlyGov {
+        if (yieldSource_ == address(0)) revert Errors.ConstructorParamsInvalid();
+        _yieldSource = yieldSource_;
     }
 
     /**
@@ -178,7 +188,9 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
             trust,
             _yieldTrustByProfileCurrencyHash,
             _profileById,
-            _erc20Whitelisted
+            _erc20Whitelisted,
+            yieldTrustVaultImpl,
+            _yieldSource
         );
     }
 
@@ -381,6 +393,11 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
             _yieldTrustByProfileCurrencyHash[FundingLogic.getYieldTrustHash(profileId, currency)];
     }
 
+    /// @inheritdoc IBuidlHub
+    function getYieldSource() external view override returns (address) {
+        return _yieldSource;
+    }
+
     // // TODO
     // function getProjectType(uint256 projectId, uint256 projectId) external view override returns(DataTypes.ProjectType) {
 
@@ -444,6 +461,11 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     /// @inheritdoc IBuidlHub
     function getInvestNFTImpl() external view override returns (address) {
         return investNFTImpl;
+    }
+
+    /// @inheritdoc IBuidlHub
+    function getYieldTrustVaultImpl() external view override returns (address) {
+        return yieldTrustVaultImpl;
     }
 
     /**

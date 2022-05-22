@@ -24,4 +24,7 @@ abstract contract BuidlHubStorage {
 
     // whitelisted ERC-20s
     mapping(address => bool) internal _erc20Whitelisted;
+
+    // yield source to use for all vaults e.g. AAVE
+    address internal _yieldSource;
 }

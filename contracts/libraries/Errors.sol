@@ -36,4 +36,6 @@ library Errors {
     error NotAllowed();
 
     error ZeroAmounts();
+    error InsufficientBalance();
+    error InsufficientAllowance();
 }

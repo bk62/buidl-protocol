@@ -116,6 +116,13 @@ library Events {
         address creator,
         uint256 timestamp
     );
+    event YieldSourceVaultDeployed(
+        uint256 indexed profileId,
+        address indexed currency,
+        address vault,
+        address yieldSource,
+        uint256 timestamp
+    );
 
     // Modules
     event ModuleBaseConstructed(address hub, uint256 timestamp);

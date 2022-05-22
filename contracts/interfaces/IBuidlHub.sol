@@ -50,6 +50,11 @@ interface IBuidlHub is IERC721 {
     function whitelistERC20(address erc20, bool whitelist) external;
 
     /**
+     * @notice Set yield source used by vaults.
+     */
+    function setYieldSource(address yieldSource) external;
+
+    /**
      * @notice Create a profile.
      *
      * @param vars `CreateProfileData` struct.
@@ -270,6 +275,11 @@ interface IBuidlHub is IERC721 {
         returns (DataTypes.YieldTrustStruct memory);
 
     /**
+     * @notice Get address of yield source used by vaults.
+     */
+    function getYieldSource() external view returns (address);
+
+    /**
      * @notice Get back NFT impl addr
      */
     function getBackNFTImpl() external view returns (address);
@@ -278,4 +288,9 @@ interface IBuidlHub is IERC721 {
      * @notice Get invest NFT impl addr
      */
     function getInvestNFTImpl() external view returns (address);
+
+    /**
+     * @notice Get Yield Trust ERC-4626 Vault impl addr
+     */
+    function getYieldTrustVaultImpl() external view returns (address);
 }
