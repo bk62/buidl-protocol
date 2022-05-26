@@ -14,6 +14,11 @@ import "./tasks"
 
 dotenv.config()
 
+const POLYGON_MUMBAI_RPC_URL = process.env.POLYGON_MUMBAI_RPC_URL || "	https://rpc-mumbai.matic.today"
+const PRIVATE_KEY = process.env.PRIVATE_KEY
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
+
+
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
@@ -22,7 +27,23 @@ const config: HardhatUserConfig = {
     },
     localhost: {
       chainId: 1337,
-    }
+    },
+    mumbai: {
+      url: POLYGON_MUMBAI_RPC_URL,
+      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      saveDeployments: true,
+      chainId: 80001
+    },
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+      1: 0,
+    },
+    governor: {
+      default: 1,
+      1: 1,
+    },
   },
   solidity: {
     compilers: [
