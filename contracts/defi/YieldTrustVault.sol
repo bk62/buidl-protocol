@@ -63,7 +63,7 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     ) external override initializer {
         if (profileId_ == 0) revert Errors.ConstructorParamsInvalid();
         if (underlyingERC20_ == address(0)) revert Errors.ConstructorParamsInvalid();
-        if (yieldSource_ == address(0)) revert Errors.ConstructorParamsInvalid();
+        // if (yieldSource_ == address(0)) revert Errors.ConstructorParamsInvalid(); // TEMP TODO until figure out AAVE depositing, getting pool addr
 
         _profileId = profileId_;
         _asset = IERC20Metadata(underlyingERC20_);
@@ -89,8 +89,7 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     /// @inheritdoc IERC4626
     function totalAssets() public view override returns (uint256) {
         // TODO yield source balance
-        return
-            _asset.balanceOf(address(this)) + IERC20Metadata(_yieldSource).balanceOf(address(this));
+        return _asset.balanceOf(address(this)); // + IERC20Metadata(_yieldSource).balanceOf(address(this));
     }
 
     /// @inheritdoc IERC4626
@@ -205,9 +204,15 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     }
 
     /// @inheritdoc IYieldTrustVault
+    function maxClaimYield() public view override returns (uint256) {
+        // yield = current vault assets - total deposited assets;
+        return totalAssets() - _currentDeposits;
+    }
+
+    /// @inheritdoc IYieldTrustVault
     function claimYield(uint256 amount) external override onlyRecipient returns (uint256) {
         // yield = current vault assets - total deposited assets;
-        uint256 maxYieldAmount = totalAssets() - _currentDeposits;
+        uint256 maxYieldAmount = maxClaimYield();
         if (amount > maxYieldAmount) revert Errors.InsufficientBalance();
         // if un-deposited balance >= yield, transfer yield to recipient
         // else, withdraw (yield - un-deposited balance), transfer to recipient
@@ -225,6 +230,13 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
 
         _currentDeposits += assetsOrShares;
 
+        IBuidlHub(hub).emitYieldTrustDepositEvent(
+            _profileId,
+            address(_asset),
+            assetsOrShares,
+            receiver,
+            address(this)
+        );
         emit Deposit(msg.sender, receiver, assetsOrShares, assetsOrShares);
     }
 
