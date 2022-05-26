@@ -113,6 +113,7 @@ library Events {
         uint256 indexed profileId,
         address indexed erc20,
         address indexed recipient,
+        address vault,
         address creator,
         uint256 timestamp
     );
@@ -121,6 +122,14 @@ library Events {
         address indexed currency,
         address vault,
         address yieldSource,
+        uint256 timestamp
+    );
+    event YieldTrustDeposited(
+        uint256 indexed profileId,
+        address indexed asset,
+        uint256 amount,
+        address indexed receiver,
+        address vault,
         uint256 timestamp
     );
 

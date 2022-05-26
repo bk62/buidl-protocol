@@ -194,6 +194,17 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         );
     }
 
+    /// @inheritdoc IBuidlHub
+    function emitYieldTrustDepositEvent(
+        uint256 profileId,
+        address asset,
+        uint256 amount,
+        address receiver,
+        address vault
+    ) external override {
+        FundingLogic.emitYieldTrustDeposited(profileId, asset, amount, receiver, vault);
+    }
+
     // TODO
     /// @inheritdoc IBuildHub
     // function setProfileImageURI(uint256 profileId, string calldata imageURI)

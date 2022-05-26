@@ -56,6 +56,12 @@ interface IYieldTrustVault is IERC4626 {
     function batchDeposit() external returns (uint256);
 
     /**
+     * @notice Max claimable yield from yield source by corresponding profile NFT owner.
+     * @return uint256 Max amount
+     */
+    function maxClaimYield() external view returns (uint256);
+
+    /**
      * @notice Claim yield from yield source -- only callable by corresponding profile NFT owner.
      */
     function claimYield(uint256 amount) external returns (uint256);

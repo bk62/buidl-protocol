@@ -90,6 +90,18 @@ interface IBuidlHub is IERC721 {
     function createYieldTrust(DataTypes.YieldTrustStruct calldata trust) external;
 
     /**
+     * @notice Emit deposited event to help with indexing and UI
+     *
+     */
+    function emitYieldTrustDepositEvent(
+        uint256 profileId,
+        address asset,
+        uint256 amount,
+        address receiver,
+        address vault
+    ) external;
+
+    /**
      * TODO
      */
     // function setProfileMetadataURI(uint256 profileId, string calldata metadataURI) external;

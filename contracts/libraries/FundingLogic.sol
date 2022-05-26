@@ -79,10 +79,21 @@ library FundingLogic {
         emit Events.YieldTrustCreated(
             trust.profileId,
             trust.currency,
-            msg.sender, // creator
             IBuidlHub(address(this)).ownerOf(trust.profileId), // recipient
+            trust.vault, // vault addr
+            msg.sender, // creator
             block.timestamp
         );
+    }
+
+    function emitYieldTrustDeposited(
+        uint256 profileId,
+        address asset,
+        uint256 amount,
+        address receiver,
+        address vault
+    ) external {
+        emit Events.YieldTrustDeposited(profileId, asset, amount, receiver, vault, block.timestamp);
     }
 
     /**
