@@ -14,10 +14,11 @@ import "./tasks"
 
 dotenv.config()
 
-const POLYGON_MUMBAI_RPC_URL = process.env.POLYGON_MUMBAI_RPC_URL || "	https://rpc-mumbai.matic.today"
+const POLYGON_MUMBAI_RPC_URL = process.env.POLYGON_MUMBAI_RPC_URL || "https://rpc-mumbai.matic.today"
+const DEPLOYER_ACCOUNT = process.env.DEPLOYER_ACCOUNT || 0
+const GOVERNANCE_ACCOUNT = process.env.GOVERNANCE_ACCOUNT || 1
+const SEEDER_ACCOUNT = process.env.SEEDER_ACCOUNT || 2
 const PRIVATE_KEY = process.env.PRIVATE_KEY
-const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
-
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -30,7 +31,8 @@ const config: HardhatUserConfig = {
     },
     mumbai: {
       url: POLYGON_MUMBAI_RPC_URL,
-      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      // TODO only one pvt key
+      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY, PRIVATE_KEY, PRIVATE_KEY, PRIVATE_KEY] : [],
       saveDeployments: true,
       chainId: 80001
     },
@@ -38,11 +40,15 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       default: 0,
-      1: 0,
+      "mumbai": DEPLOYER_ACCOUNT,
     },
-    governor: {
+    governance: {
       default: 1,
-      1: 1,
+      "mumbai": GOVERNANCE_ACCOUNT,
+    },
+    seeder: {
+      default: 2,
+      "mumbai": SEEDER_ACCOUNT,
     },
   },
   solidity: {
@@ -58,7 +64,13 @@ const config: HardhatUserConfig = {
             },
           },
         }
-      }
+      },
+      {
+        version: "0.6.6",
+      },
+      {
+        version: "0.4.24",
+      },
     ],
   },
   mocha: {
