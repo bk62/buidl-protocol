@@ -89,56 +89,56 @@ library DataTypes {
         Closed
     }
 
-    enum ProjectDAOFactoryState {
-        None,
-        ProtoDAO,
-        DAO,
-        Launched
+    // enum ProjectDAOFactoryState {
+    //     None,
+    //     ProtoDAO,
+    //     DAO,
+    //     Launched
     }
 
-    enum ProjectDAOFactoryGovernanceType {
-        Individual,
-        MultiSig,
-        TokenVoting,
-        NFTVoting,
-        // Experimental
-        Dictatorship,
-        Monarchy,
-        Oligarchy,
-        Corporate,
-        Bicameral
-    }
+    // enum ProjectDAOFactoryGovernanceType {
+    //     Individual,
+    //     MultiSig,
+    //     TokenVoting,
+    //     NFTVoting,
+    //     // Experimental
+    //     Dictatorship,
+    //     Monarchy,
+    //     Oligarchy,
+    //     Corporate,
+    //     Bicameral
+    // }
 
-    struct DAOFactoryDetails {
-        ProjectDAOFactoryState daoFactoryState;
-        ProjectDAOFactoryGovernanceType governanceType;
-    }
+    // struct DAOFactoryDetails {
+    //     ProjectDAOFactoryState daoFactoryState;
+    //     ProjectDAOFactoryGovernanceType governanceType;
+    // }
 
     /**
      * @notice Fund greed level aka profit type enum
      */
-    enum FundGreedLevel {
-        Grant, // Simple fund grants -- contribute without any expectations of anything in return
-        Buidl, // Fund grants meant to incentivize #buidl projects in your ecosystem
-        VentureFund // Invest for profit - Greed is good!
-    }
+    // enum FundGreedLevel {
+    //     Grant, // Simple fund grants -- contribute without any expectations of anything in return
+    //     Buidl, // Fund grants meant to incentivize #buidl projects in your ecosystem
+    //     VentureFund // Invest for profit - Greed is good!
+    // }
 
     /**
      * @notice Fund vault type
      */
-    enum FundVaultType {
-        TrustVault, // EIP-4626 compatible yield vaults that disburse yields -- no loss!
-        PTPodVault, // EIP-4626 compatible PoolTogether vaults that disburse awarded prize payouts from PT -- no loss!
-        VentureVault // EIP-4626 compatible yield vaults that invest in projects collectively -- yes, loss! tremendously risky!
-    }
+    // enum FundVaultType {
+    //     TrustVault, // EIP-4626 compatible yield vaults that disburse yields -- no loss!
+    //     PTPodVault, // EIP-4626 compatible PoolTogether vaults that disburse awarded prize payouts from PT -- no loss!
+    //     VentureVault // EIP-4626 compatible yield vaults that invest in projects collectively -- yes, loss! tremendously risky!
+    // }
 
     /**
      * @notice Fund Type
      */
-    struct FundType {
-        FundGreedLevel greedLevel;
-        FundVaultType vaultType;
-    }
+    // struct FundType {
+    //     FundGreedLevel greedLevel;
+    //     FundVaultType vaultType;
+    // }
 
     /**
      * @notice Profile data struct
@@ -171,6 +171,7 @@ library DataTypes {
         // TODO struct with subscores
         // store history
         // uint256 reputationScore;
+        string githubUsername;
     }
 
     /**
@@ -198,9 +199,10 @@ library DataTypes {
         // Invest in a project
         address investModule;
         address investNFT;
-        address investToken;
-        address governanceModule;
-        DAOFactoryDetails daoFactoryDetails;
+        // address investToken;
+        // address governanceModule;
+        // DAOFactoryDetails daoFactoryDetails;
+        string githubRepoName;
     }
 
     struct YieldTrustStruct {
@@ -220,25 +222,25 @@ library DataTypes {
      * @param investedByModule Module used when this fund invests in someone
      * @param investedByNFT NFT issued when this fund invests in someone
      */
-    struct FundStruct {
-        string handle;
-        string metadataURI;
-        FundGreedLevel fundGreedLevel;
-        FundVaultType fundVaultType;
-        // Apply for a grant/investment via a project
-        address applyModule;
-        address applyNFT;
-        // Invest in this fund
-        address investInModule;
-        address investInNFT;
-        address investInToken;
-        // Got invest from
-        address investmentFromModule;
-        address investmentFromNFT;
-        // TODO
-        // investment details struct
-        // amount, timestamp
-    }
+    // struct FundStruct {
+    //     string handle;
+    //     string metadataURI;
+    //     FundGreedLevel fundGreedLevel;
+    //     FundVaultType fundVaultType;
+    //     // Apply for a grant/investment via a project
+    //     address applyModule;
+    //     address applyNFT;
+    //     // Invest in this fund
+    //     address investInModule;
+    //     address investInNFT;
+    //     address investInToken;
+    //     // Got invest from
+    //     address investmentFromModule;
+    //     address investmentFromNFT;
+    //     // TODO
+    //     // investment details struct
+    //     // amount, timestamp
+    // }
 
     struct CreateProfileData {
         address to;
@@ -249,6 +251,7 @@ library DataTypes {
         bytes backModuleInitData;
         // address endorsedByModule;
         // bytes endorsedByModuleInitData;
+        string githubUsername;
     }
 
     struct CreateProjectData {
@@ -260,19 +263,20 @@ library DataTypes {
         ProjectState projectState;
         address investModule;
         bytes investModuleInitData;
+        string githubRepoName;
     }
 
-    struct CreateFundData {
-        uint256 profileId;
-        string handle;
-        string metadataURI;
-        FundGreedLevel fundGreedLevel;
-        FundVaultType fundVaultType;
-        address applyModule;
-        bytes applyModuleInitData;
-        address investmentFromModule;
-        bytes investmentFromModuleInitData;
-    }
+    // struct CreateFundData {
+    //     uint256 profileId;
+    //     string handle;
+    //     string metadataURI;
+    //     FundGreedLevel fundGreedLevel;
+    //     FundVaultType fundVaultType;
+    //     address applyModule;
+    //     bytes applyModuleInitData;
+    //     address investmentFromModule;
+    //     bytes investmentFromModuleInitData;
+    // }
 
     // Helpers
 
