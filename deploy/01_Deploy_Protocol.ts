@@ -58,11 +58,15 @@ const deployFunction: DeployFunction = async (hre) => {
     const backNFTNonce = hexlify(deployerNonce + 1);
     const investNFTNonce = hexlify(deployerNonce + 2);
     const ytVaultNonce = hexlify(deployerNonce + 3);
+    const erc20IcoNonce = hexlify(deployerNonce + 4);
+
 
     const backNFTAddress = "0x" + keccak256(RLP.encode([deployer, backNFTNonce])).slice(26);
     const investNFTAddress = "0x" + keccak256(RLP.encode([deployer, investNFTNonce])).slice(26);
     const ytVaultAddress = "0x" + keccak256(RLP.encode([deployer, ytVaultNonce])).slice(26);
+    const erco20IcoAddress = "0x" + keccak256(RLP.encode([deployer, erc20IcoNonce])).slice(26);
     const hubAddress = "0x" + keccak256(RLP.encode([deployer, hubNonce])).slice(26);
+
 
     log("Deploying Hub...")
 
@@ -77,6 +81,7 @@ const deployFunction: DeployFunction = async (hre) => {
             backNFTAddress,
             investNFTAddress,
             ytVaultAddress,
+            erco20IcoAddress
         ],
         nonce: deployerNonce++,
         log: true,
@@ -128,6 +133,17 @@ const deployFunction: DeployFunction = async (hre) => {
         waitConfirmations: waitBlockConfirmations,
     })
 
+    log("Deploying ERC-20 for ICO implementation...")
+    const erc20Ico = await deploy("ERC20ICO", {
+        from: deployer,
+        args: [
+            hubAddress,
+        ],
+        nonce: deployerNonce++,
+        log: true,
+        waitConfirmations: waitBlockConfirmations,
+    })
+
     log("Deploying modules...")
     const backerOnlyInvestModule = await deploy("BackerOnlyInvestModule", {
         from: deployer,
@@ -142,10 +158,30 @@ const deployFunction: DeployFunction = async (hre) => {
         from: deployer,
         args: [
             hubAddress,
+            erco20IcoAddress
         ],
         log: true,
         waitConfirmations: waitBlockConfirmations
     });
+
+    const investErc20IcoModule = await deploy("InvestERC20ICOModule", {
+        from: deployer,
+        args: [
+            hubAddress,
+            erco20IcoAddress
+        ],
+        log: true,
+        waitConfirmations: waitBlockConfirmations
+    });
+
+    // const backRandomNftModule = await deploy("BackRandomNftModule", {
+    //     from: deployer,
+    //     args: [
+    //         hubAddress,
+    //     ],
+    //     log: true,
+    //     waitConfirmations: waitBlockConfirmations
+    // });
 
     // const investRandomNftModule = await deploy("InvestRandomNFTModule", {
     //     from: deployer,
@@ -158,15 +194,19 @@ const deployFunction: DeployFunction = async (hre) => {
 
     log("Writing addresses to addresses.json for convenience...")
     const addrs = {
+        deployer,
+        governance,
         "hub": hub.address,
         backNFTAddress,
         investNFTAddress,
         ytVaultAddress,
+        erco20IcoAddress,
         "buidling-logic-lib": buidlingLogic.address,
         "funding-logic-lib": fundingLogic.address,
-        "governance": governance,
-        backerOnlyInvestModule,
-        backErc20IcoModule,
+        backerOnlyInvestModule: backerOnlyInvestModule.address,
+        backErc20IcoModule: backErc20IcoModule.address,
+        investErc20IcoModule: investErc20IcoModule.address,
+        // backRandomNftModule,
         // investRandomNftModule,
     };
     const json = JSON.stringify(addrs, null, 2);

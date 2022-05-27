@@ -28,6 +28,7 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     address internal immutable backNFTImpl;
     address internal immutable investNFTImpl;
     address internal immutable yieldTrustVaultImpl;
+    address internal immutable erc20IcoImpl; // erc20 impl for ICO modules
 
     /**
      * @dev Modifier to revert unless called by governance address.
@@ -43,15 +44,18 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         address newGovernance,
         address backNFTImpl_,
         address investNFTImpl_,
-        address yieldTrustVaultImpl_
+        address yieldTrustVaultImpl_,
+        address erc20IcoImpl_
     ) ERC721(name, symbol) {
         if (backNFTImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
         if (investNFTImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
         if (yieldTrustVaultImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
+        if (erc20IcoImpl_ == address(0)) revert Errors.ConstructorParamsInvalid();
 
         backNFTImpl = backNFTImpl_;
         investNFTImpl = investNFTImpl_;
         yieldTrustVaultImpl = yieldTrustVaultImpl_;
+        erc20IcoImpl = erc20IcoImpl_;
 
         _setState(DataTypes.ProtocolState.Paused);
         _setGovernance(newGovernance);
