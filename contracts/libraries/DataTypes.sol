@@ -94,7 +94,7 @@ library DataTypes {
     //     ProtoDAO,
     //     DAO,
     //     Launched
-    }
+    // }
 
     // enum ProjectDAOFactoryGovernanceType {
     //     Individual,
@@ -211,17 +211,17 @@ library DataTypes {
         address vault; // vault address
     }
 
-    /**
-     * @notice A struct containing venture fund data
-     *
-     * @param handle  Unique (to projects) handle
-     * @param metadataURI ERC-712 Metadata URI - IPFS
-     * @param grantType Type of grant
-     * @param applyModule Module used when someone applies to this grant
-     * @param applyNFT NFTs issued when someone applies to this grant
-     * @param investedByModule Module used when this fund invests in someone
-     * @param investedByNFT NFT issued when this fund invests in someone
-     */
+    // /**
+    //  * @notice A struct containing venture fund data
+    //  *
+    //  * @param handle  Unique (to projects) handle
+    //  * @param metadataURI ERC-712 Metadata URI - IPFS
+    //  * @param grantType Type of grant
+    //  * @param applyModule Module used when someone applies to this grant
+    //  * @param applyNFT NFTs issued when someone applies to this grant
+    //  * @param investedByModule Module used when this fund invests in someone
+    //  * @param investedByNFT NFT issued when this fund invests in someone
+    //  */
     // struct FundStruct {
     //     string handle;
     //     string metadataURI;
