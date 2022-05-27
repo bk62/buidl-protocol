@@ -121,7 +121,7 @@ library Events {
         uint256 indexed profileId,
         address indexed currency,
         address vault,
-        address yieldSource,
+        address aToken,
         uint256 timestamp
     );
     event YieldTrustDeposited(

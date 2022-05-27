@@ -2,10 +2,7 @@ import { DeployFunction } from "hardhat-deploy/types"
 import { network } from "hardhat"
 import { hexlify, RLP, keccak256 } from "ethers/lib/utils";
 import fs from "fs";
-import { deployContract, waitForTx, ProtocolState, ZERO_ADDRESS } from "../tasks/helpers/utils";
-import {
-    BuidlHub__factory,
-} from "../typechain";
+
 
 
 import {
@@ -121,7 +118,7 @@ const deployFunction: DeployFunction = async (hre) => {
     })
 
     log("Deploying YTVault implementation...")
-    const ytVault = await deploy("InvestNFT", {
+    const ytVault = await deploy("YieldTrustVault", {
         from: deployer,
         args: [
             hubAddress,
@@ -131,6 +128,34 @@ const deployFunction: DeployFunction = async (hre) => {
         waitConfirmations: waitBlockConfirmations,
     })
 
+    log("Deploying modules...")
+    const backerOnlyInvestModule = await deploy("BackerOnlyInvestModule", {
+        from: deployer,
+        args: [
+            hubAddress,
+        ],
+        log: true,
+        waitConfirmations: waitBlockConfirmations
+    });
+
+    const backErc20IcoModule = await deploy("BackERC20ICOModule", {
+        from: deployer,
+        args: [
+            hubAddress,
+        ],
+        log: true,
+        waitConfirmations: waitBlockConfirmations
+    });
+
+    // const investRandomNftModule = await deploy("InvestRandomNFTModule", {
+    //     from: deployer,
+    //     args: [
+    //         hubAddress,
+    //     ],
+    //     log: true,
+    //     waitConfirmations: waitBlockConfirmations
+    // });
+
     log("Writing addresses to addresses.json for convenience...")
     const addrs = {
         "hub": hub.address,
@@ -139,7 +164,10 @@ const deployFunction: DeployFunction = async (hre) => {
         ytVaultAddress,
         "buidling-logic-lib": buidlingLogic.address,
         "funding-logic-lib": fundingLogic.address,
-        "governance": governance
+        "governance": governance,
+        backerOnlyInvestModule,
+        backErc20IcoModule,
+        // investRandomNftModule,
     };
     const json = JSON.stringify(addrs, null, 2);
     fs.writeFileSync("addresses.json", json, "utf-8");

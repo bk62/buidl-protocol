@@ -22,6 +22,7 @@ library Errors {
     error DAOFactoryPaused();
 
     error ConstructorParamsInvalid();
+    error InitializerParamsInvalid();
     error Initialized();
     error NotHub();
     error TokenDoesNotExist();
@@ -38,4 +39,9 @@ library Errors {
     error ZeroAmounts();
     error InsufficientBalance();
     error InsufficientAllowance();
+
+    error UnknownERC20aToken();
+    error InvalidAaveContract();
+
+    error InvalidModuleArgs();
 }

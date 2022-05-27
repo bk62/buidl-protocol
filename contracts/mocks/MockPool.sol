@@ -4,21 +4,9 @@ pragma solidity ^0.8.0;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IMockERC20Mintable} from "./MockERC20.sol";
+import {IAavePool} from "../defi/IAavePool.sol";
 
-interface IMockPool {
-    function supply(
-        address asset,
-        uint256 amount,
-        address onBehalfOf,
-        uint16 referralCode
-    ) external;
-
-    function withdraw(
-        address asset,
-        uint256 amount,
-        address to
-    ) external;
-
+interface IMockPool is IAavePool {
     function simulateYield(address depositor, uint256 amount) external;
 }
 
@@ -43,7 +31,7 @@ contract MockPool is IMockPool {
         address asset,
         uint256 amount,
         address to
-    ) external override {
+    ) external override returns (uint256) {
         IERC20 assetERC20 = IERC20(asset);
         require(assetERC20.balanceOf(address(this)) >= amount, "insufficient-balance");
 
@@ -51,6 +39,8 @@ contract MockPool is IMockPool {
         assetERC20.transferFrom(address(this), to, amount);
         // "burn" aToken
         IMockERC20Mintable(address(_aToken)).transferFrom(msg.sender, address(this), amount);
+
+        return amount;
     }
 
     function simulateYield(address depositor, uint256 amount) external override {

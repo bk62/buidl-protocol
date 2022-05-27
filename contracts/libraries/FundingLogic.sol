@@ -19,6 +19,7 @@ import {IInvestNFT} from "../interfaces/IInvestNFT.sol";
 import {IInvestModule} from "../interfaces/IInvestModule.sol";
 import {InvestNFT} from "../core/InvestNFT.sol";
 import "../defi/IYieldTrustVault.sol";
+import {IAavePoolAddressesProvider} from "../defi/IAavePoolAddressesProvider.sol";
 
 // import "hardhat/console.sol";
 
@@ -31,6 +32,15 @@ library FundingLogic {
     using Strings for uint256;
     using SafeERC20 for IERC20;
 
+    // /**
+    //  * @notice Get latest aave pool
+    //  */
+    // function getAavePool(address poolAddressProvider) external returns (address) {
+    //     if (poolAddressProvider == address(0)) revert Errors.InvalidAaveContract();
+    //     IAavePoolAddressesProvider provider = IAavePoolAddressesProvider(poolAddressProvider);
+    //     return poolAddressProvider.getPool();
+    // }
+
     /**
      * @notice Create yield trust
      */
@@ -40,7 +50,7 @@ library FundingLogic {
         mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
         mapping(address => bool) storage _erc20Whitelisted,
         address ytVaultImpl,
-        address yieldSource
+        mapping(address => address) storage _aaveaTokenByCurrency
     ) external {
         // check profile exists
         if (
@@ -54,6 +64,9 @@ library FundingLogic {
         // check currency
         if (trust.currency == address(0) || !_erc20Whitelisted[trust.currency]) {
             revert Errors.InvalidERC20();
+        }
+        if (_aaveaTokenByCurrency[trust.currency] == address(0)) {
+            revert Errors.UnknownERC20aToken();
         }
 
         bytes32 ytHash = getYieldTrustHash(trust.profileId, trust.currency);
@@ -69,7 +82,7 @@ library FundingLogic {
             _profileById[trust.profileId].handle,
             trust.profileId,
             trust.currency,
-            yieldSource
+            _aaveaTokenByCurrency[trust.currency]
         );
 
         // store trust by hash of (profileId, currency addr)
@@ -337,7 +350,7 @@ library FundingLogic {
         string memory handle,
         uint256 profileId,
         address currency,
-        address yieldSource
+        address aToken
     ) internal returns (address) {
         address vault = Clones.clone(vaultImpl);
 
@@ -354,15 +367,9 @@ library FundingLogic {
             )
         );
 
-        IYieldTrustVault(vault).initialize(profileId, currency, yieldSource, name, symbol);
+        IYieldTrustVault(vault).initialize(profileId, currency, aToken, name, symbol);
 
-        emit Events.YieldSourceVaultDeployed(
-            profileId,
-            currency,
-            vault,
-            yieldSource,
-            block.timestamp
-        );
+        emit Events.YieldSourceVaultDeployed(profileId, currency, vault, aToken, block.timestamp);
 
         return vault;
     }

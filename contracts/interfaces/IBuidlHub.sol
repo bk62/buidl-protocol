@@ -50,9 +50,19 @@ interface IBuidlHub is IERC721 {
     function whitelistERC20(address erc20, bool whitelist) external;
 
     /**
-     * @notice Set yield source used by vaults.
+     * @notice Set Aave pool address provider used by vaults.
      */
-    function setYieldSource(address yieldSource) external;
+    function setAavePoolAddressProvider(address provider) external;
+
+    /**
+     * @notice Set Aave aToken for a given currency
+     */
+    function setAaveaToken(address erc20, address aToken) external;
+
+    /**
+     * @notice Set the Chainlink price feed address for a given ERC-20
+     */
+    function setPriceFeed(address erc20, address priceFeed) external;
 
     /**
      * @notice Create a profile.
@@ -100,6 +110,16 @@ interface IBuidlHub is IERC721 {
         address receiver,
         address vault
     ) external;
+
+    /**
+     * @notice Return latest Aave pool address
+     */
+    function getAavePool() external view returns (address);
+
+    /**
+     * @notice Return the Chainlink price feed address for a given ERC-20
+     */
+    function getPriceFeed(address erc20, bool native) external view returns (address);
 
     /**
      * TODO
@@ -287,9 +307,14 @@ interface IBuidlHub is IERC721 {
         returns (DataTypes.YieldTrustStruct memory);
 
     /**
-     * @notice Get address of yield source used by vaults.
+     * @notice Get address of Aave pool address provider used by vaults
      */
-    function getYieldSource() external view returns (address);
+    function getAavePoolAddressProvider() external view returns (address);
+
+    /**
+     * @notice Get Aave aToken for a given currency
+     */
+    function getAaveaToken(address erc20) external view returns (address);
 
     /**
      * @notice Get back NFT impl addr

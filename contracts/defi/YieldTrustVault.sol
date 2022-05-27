@@ -14,6 +14,7 @@ import {IBuidlHub} from "../interfaces/IBuidlHub.sol";
 import {Errors} from "../libraries/Errors.sol";
 import {Events} from "../libraries/Events.sol";
 import {DataTypes} from "../libraries/DataTypes.sol";
+import {IAavePool} from "../defi/IAavePool.sol";
 
 import "./IYieldTrustVault.sol";
 
@@ -31,8 +32,8 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     // used to track amount claimable/withdrawable by recipient
     uint256 internal _currentDeposits;
 
-    // yield source
-    address internal _yieldSource;
+    // yield tokens -- i.e. AAVE aTokens
+    address internal _aToken;
     // Profile NFT tokenID that is the yield recipient
     uint256 internal _profileId;
 
@@ -57,17 +58,17 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     function initialize(
         uint256 profileId_,
         address underlyingERC20_,
-        address yieldSource_,
+        address aToken_,
         string calldata name,
         string calldata symbol
     ) external override initializer {
         if (profileId_ == 0) revert Errors.ConstructorParamsInvalid();
         if (underlyingERC20_ == address(0)) revert Errors.ConstructorParamsInvalid();
-        // if (yieldSource_ == address(0)) revert Errors.ConstructorParamsInvalid(); // TEMP TODO until figure out AAVE depositing, getting pool addr
+        if (aToken_ == address(0)) revert Errors.ConstructorParamsInvalid();
 
         _profileId = profileId_;
         _asset = IERC20Metadata(underlyingERC20_);
-        _yieldSource = yieldSource_;
+        _aToken = aToken_;
 
         __ReentrancyGuard_init();
 
@@ -88,8 +89,8 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
 
     /// @inheritdoc IERC4626
     function totalAssets() public view override returns (uint256) {
-        // TODO yield source balance
-        return _asset.balanceOf(address(this)); // + IERC20Metadata(_yieldSource).balanceOf(address(this));
+        // Total balance = asset (not deposited into pool) + aToken (deposited into pool + yield)
+        return _asset.balanceOf(address(this)) + IERC20Metadata(_aToken).balanceOf(address(this));
     }
 
     /// @inheritdoc IERC4626
@@ -180,8 +181,8 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     // IYieldTrustVault methods:
 
     /// @inheritdoc IYieldTrustVault
-    function yieldSource() external view override returns (address) {
-        return _yieldSource;
+    function aToken() external view override returns (address) {
+        return _aToken;
     }
 
     /// @inheritdoc IYieldTrustVault
@@ -197,10 +198,16 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
     /// @inheritdoc IYieldTrustVault
     function batchDeposit() external override returns (uint256) {
         uint256 assetBalance = _asset.balanceOf(address(this));
-        _asset.safeApprove(address(_yieldSource), assetBalance);
-        // _yieldSource.deposit(address(this), assetBalance); // TODO
+        _asset.safeApprove(address(_aToken), assetBalance);
+        IAavePool pool = IAavePool(IBuidlHub(hub).getAavePool());
+        pool.supply(address(_asset), assetBalance, address(this), 0);
         emit YieldSourceBatchDeposit(assetBalance);
         return assetBalance;
+    }
+
+    /// @inheritdoc IYieldTrustVault
+    function totalDeposits() public view override returns (uint256) {
+        return _currentDeposits;
     }
 
     /// @inheritdoc IYieldTrustVault
@@ -219,6 +226,7 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
         _ensureContractAssetBalance(amount);
         _asset.safeTransfer(yieldRecipient(), amount);
         emit YieldClaimed(msg.sender, amount);
+        return amount;
     }
 
     // Internal:
@@ -273,8 +281,10 @@ contract YieldTrustVault is ReentrancyGuardUpgradeable, ERC20Upgradeable, IYield
             return;
         }
         uint256 toWithdraw = balanceRequired - currentBalance;
-        // withdraw from yield source
-        // _yieldSource.withdraw(address(this), toWithdraw); // TODO
+        // withdraw from yield pool
+
+        IAavePool pool = IAavePool(IBuidlHub(hub).getAavePool());
+        pool.withdraw(address(this), toWithdraw, address(this));
 
         emit YieldSourceWithdrawal(toWithdraw);
     }

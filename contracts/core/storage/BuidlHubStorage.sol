@@ -3,6 +3,7 @@
 pragma solidity ^0.8.0;
 
 import {DataTypes} from "../../libraries/DataTypes.sol";
+import {IAavePoolAddressesProvider} from "../../defi/IAavePoolAddressesProvider.sol";
 
 abstract contract BuidlHubStorage {
     mapping(address => bool) internal _profileCreatorWhitelisted;
@@ -25,6 +26,15 @@ abstract contract BuidlHubStorage {
     // whitelisted ERC-20s
     mapping(address => bool) internal _erc20Whitelisted;
 
-    // yield source to use for all vaults e.g. AAVE
-    address internal _yieldSource;
+    // AAVE yield source information - for Yield Trust Vaults
+    IAavePoolAddressesProvider internal _aavePoolAddressProvider;
+    // ERC-20 addr => corresponding Aave aToken
+    // also used to track erc20s allowed to be yield trust underyling assets
+    // b/c some ERC-20s might be whitelisted but not supported by Aave
+    // TODO need events to track what's been set
+    mapping(address => address) _aaveaTokenByCurrency;
+
+    // Modules and chainlink
+    address _clNativePriceFeed;
+    mapping(address => address) _clPriceFeedByCurrency;
 }

@@ -14,6 +14,7 @@ import {FundingLogic} from "../libraries/FundingLogic.sol";
 import {NFTBase} from "./base/NFTBase.sol";
 import {MultiState} from "./base/MultiState.sol";
 import {BuidlHubStorage} from "./storage/BuidlHubStorage.sol";
+import {IAavePoolAddressesProvider} from "../defi/IAavePoolAddressesProvider.sol";
 
 /**
  * @title BuidlHub
@@ -100,9 +101,26 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     }
 
     ///@inheritdoc IBuidlHub
-    function setYieldSource(address yieldSource_) external override onlyGov {
-        if (yieldSource_ == address(0)) revert Errors.ConstructorParamsInvalid();
-        _yieldSource = yieldSource_;
+    function setAavePoolAddressProvider(address provider_) external override onlyGov {
+        if (provider_ == address(0)) revert Errors.ConstructorParamsInvalid();
+        _aavePoolAddressProvider = IAavePoolAddressesProvider(provider_);
+    }
+
+    ///@inheritdoc IBuidlHub
+    function setAaveaToken(address erc20, address aToken) external override onlyGov {
+        if (erc20 == address(0) || aToken == address(0)) revert Errors.ConstructorParamsInvalid();
+        _aaveaTokenByCurrency[erc20] = aToken;
+    }
+
+    /// @inheritdoc IBuidlHub
+    function setPriceFeed(address erc20, address priceFeed) external override {
+        if (priceFeed == address(0)) revert Errors.ConstructorParamsInvalid();
+        if (erc20 == address(0)) {
+            // native
+            _clNativePriceFeed = priceFeed;
+        } else {
+            _clPriceFeedByCurrency[erc20] = priceFeed;
+        }
     }
 
     /**
@@ -190,7 +208,7 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
             _profileById,
             _erc20Whitelisted,
             yieldTrustVaultImpl,
-            _yieldSource
+            _aaveaTokenByCurrency
         );
     }
 
@@ -203,6 +221,16 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
         address vault
     ) external override {
         FundingLogic.emitYieldTrustDeposited(profileId, asset, amount, receiver, vault);
+    }
+
+    /// @inheritdoc IBuidlHub
+    function getAavePool() external view override returns (address) {
+        _aavePoolAddressProvider.getPool();
+    }
+
+    ///@inheritdoc IBuidlHub
+    function getAaveaToken(address erc20) external view override returns (address) {
+        return _aaveaTokenByCurrency[erc20];
     }
 
     // TODO
@@ -405,8 +433,14 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     }
 
     /// @inheritdoc IBuidlHub
-    function getYieldSource() external view override returns (address) {
-        return _yieldSource;
+    function getAavePoolAddressProvider() external view override returns (address) {
+        return address(_aavePoolAddressProvider);
+    }
+
+    /// @inheritdoc IBuidlHub
+    function getPriceFeed(address erc20, bool native) external view override returns (address) {
+        if (native) return _clNativePriceFeed;
+        return _clPriceFeedByCurrency[erc20];
     }
 
     // // TODO

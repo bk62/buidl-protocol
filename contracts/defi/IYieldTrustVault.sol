@@ -29,15 +29,15 @@ interface IYieldTrustVault is IERC4626 {
     function initialize(
         uint256 profileId,
         address assetErc20,
-        address yieldSource,
+        address aToken,
         string calldata name,
         string calldata symbol
     ) external;
 
     /**
-     * @notice Get yield source address
+     * @notice Get aToken address
      */
-    function yieldSource() external view returns (address);
+    function aToken() external view returns (address);
 
     /**
      * @notice Get profile token id corresponding to profile id i.e. profile NFT token Id on hub
@@ -54,6 +54,12 @@ interface IYieldTrustVault is IERC4626 {
      * @return uint256 Amount deposited
      */
     function batchDeposit() external returns (uint256);
+
+    /**
+     * @notice Total deposits by contributors to the fund i.e. total assets - total yield.
+     * @return uint256 Total deposits
+     */
+    function totalDeposits() external view returns (uint256);
 
     /**
      * @notice Max claimable yield from yield source by corresponding profile NFT owner.

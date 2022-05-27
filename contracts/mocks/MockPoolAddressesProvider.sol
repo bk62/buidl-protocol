@@ -2,18 +2,16 @@
 
 pragma solidity ^0.8.0;
 
-interface IMockPoolAddressesProvider {
-    function getPool() external returns (address);
-}
+import {IAavePoolAddressesProvider} from "../defi/IAavePoolAddressesProvider.sol";
 
-contract MockPoolAddressesProvider is IMockPoolAddressesProvider {
+contract MockPoolAddressesProvider is IAavePoolAddressesProvider {
     address public _pool;
 
     constructor(address pool_) {
         _pool = pool_;
     }
 
-    function getPool() external override returns (address) {
+    function getPool() public view override returns (address) {
         return _pool;
     }
 }
