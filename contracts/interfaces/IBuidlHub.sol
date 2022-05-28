@@ -233,7 +233,10 @@ interface IBuidlHub is IERC721 {
     /**
      * @notice Get the Back NFT URI for a profile.
      */
-    function getBackNFTURI(uint256 profileId) external view returns (string memory);
+    function getBackNFTURI(uint256 profileId, uint256 tokenId)
+        external
+        view
+        returns (string memory);
 
     /**
      * @notice
@@ -248,10 +251,11 @@ interface IBuidlHub is IERC721 {
     /**
      * @notice Get the Back NFT URI for a project.
      */
-    function getInvestNFTURI(uint256 profileId, uint256 projectId)
-        external
-        view
-        returns (string memory);
+    function getInvestNFTURI(
+        uint256 profileId,
+        uint256 projectId,
+        uint256 tokenId
+    ) external view returns (string memory);
 
     /**
      * @notice Get the handle corresponding to a profile.

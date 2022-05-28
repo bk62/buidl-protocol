@@ -26,18 +26,20 @@ const deployFunction: DeployFunction = async (hre) => {
         : VERIFICATION_BLOCK_CONFIRMATIONS
 
 
+
+
     let linkToken: string | undefined;
-    // let mockErc20: string | undefined;
+    let mockErc20: string | undefined;
     let poolAddressProvider: string | undefined
     let aLinkToken: string | undefined;
 
     if (chainId === 1337) {
         linkToken = (await deployments.get("LinkToken")).address;
-        // mockErc20 = (await deployments.get("MockERC20")).address;
+        mockErc20 = (await deployments.get("MockERC20")).address;
         poolAddressProvider = (await deployments.get("MockPoolAddressesProvider")).address;
         aLinkToken = (await deployments.get("MockaToken")).address;
     } else {
-        linkToken = networkConfig[chainId].aaveLinkToken; // TODO refer to hardhat helper config ts
+        linkToken = networkConfig[chainId].linkToken; // TODO refer to hardhat helper config ts
         poolAddressProvider = networkConfig[chainId].poolAddressesProvider;
         aLinkToken = networkConfig[chainId].aLinkToken;
     }
@@ -46,6 +48,21 @@ const deployFunction: DeployFunction = async (hre) => {
     await waitForTx(hub.whitelistERC20(linkToken ?? constants.AddressZero, true));
     await waitForTx(hub.setAavePoolAddressProvider(poolAddressProvider ?? constants.AddressZero));
     // await waitForTx(hub.setAaveaToken(linkToken, aLinkToken));
+
+    log("Setting price feed addresses for native currency and whitelisted currencies:")
+    if (chainId === 1337) {
+        const mockPF = (await deployments.get("MockV3Aggregator")).address;
+        await waitForTx(hub.whitelistERC20(mockErc20 ?? constants.AddressZero, true));
+        await waitForTx(hub.setPriceFeed(linkToken ?? constants.AddressZero, mockPF));
+        await waitForTx(hub.setPriceFeed(mockErc20 ?? constants.AddressZero, mockPF));
+        // native
+        await waitForTx(hub.setPriceFeed(constants.AddressZero, mockPF));
+    } else {
+        await waitForTx(hub.setPriceFeed(linkToken ?? constants.AddressZero, networkConfig[chainId].priceFeeds?.linkUsdPriceFeed || constants.AddressZero));
+        // native
+        await waitForTx(hub.setPriceFeed(constants.AddressZero, networkConfig[chainId].priceFeeds?.maticUsdPriceFeed || constants.AddressZero));
+    }
+    // whitelist link
 
     let linkFundAmount;
     if (chainId === 1337) {
@@ -58,13 +75,13 @@ const deployFunction: DeployFunction = async (hre) => {
     const backModule = await deployments.get("BackERC20ICOModule")
     log("Funding BackERC20ICOModule with link");
     log("Deployer link balance is: " + utils.formatEther(await linkTokenContract.balanceOf(deployerSigner.address)));
-    let tx = await linkTokenContract.increaseApproval(linkTokenContract.address, utils.parseEther(linkFundAmount))
-    log("Approved amount " + linkFundAmount);
-    await tx.wait(1);
-    log("Allowance is: " + utils.formatEther(await linkTokenContract.allowance(deployerSigner.address, linkTokenContract.address)));
+    // let tx = await linkTokenContract.increaseApproval(linkTokenContract.address, utils.parseEther(linkFundAmount))
+    // log("Approved amount " + linkFundAmount);
+    // await tx.wait(1);
+    // log("Allowance is: " + utils.formatEther(await linkTokenContract.allowance(deployerSigner.address, linkTokenContract.address)));
 
     log("Transferring");
-    tx = await linkTokenContract.transfer(
+    let tx = await linkTokenContract.transfer(
         // deployerSigner.address,
         backModule.address,
         utils.parseEther(linkFundAmount)
@@ -73,9 +90,18 @@ const deployFunction: DeployFunction = async (hre) => {
 
     log("Contract link balance is: " + utils.formatEther(await linkTokenContract.balanceOf(backModule.address)));
 
+
+
+
     // log("Funding InvestERC20ICOModule with link");
 
+    log(`Whitelisting modules`)
+    const investModule = await deployments.get("BackerOnlyInvestModule")
 
+    tx = await hub.connect(governanceSigner).whitelistBackModule(backModule.address, true);
+    await tx.wait()
+    tx = await hub.connect(governanceSigner).whitelistInvestModule(investModule.address, true);
+    await tx.wait()
 
     log(`Finished configuring protocol!`)
     log("----------------------------------------------------")

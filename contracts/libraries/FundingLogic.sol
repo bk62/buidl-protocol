@@ -154,12 +154,13 @@ library FundingLogic {
         address backModule = _profileById[profileId].backModule;
 
         // Process via back module
-        // if back module is set, send any native currency in tx to module
-        // send to owner wallet otherwise
+
         if (backModule != address(0)) {
-            _transferFundsTo(backModule, msg.value, erc20s, amounts);
+            // _transferFundsTo(backModule, msg.value, erc20s, amounts);
             IBackModule(backModule).process(backer, profileId, moduleData);
-        } else {
+        }
+        // avoid stack too deep
+        {
             address profileOwner = IBuidlHub(address(this)).ownerOf(profileId);
             _transferFundsTo(profileOwner, msg.value, erc20s, amounts);
         }
@@ -172,6 +173,8 @@ library FundingLogic {
             msg.value,
             erc20s,
             amounts,
+            tokenId,
+            backNFT,
             block.timestamp
         );
         return tokenId;
@@ -183,7 +186,7 @@ library FundingLogic {
     function invest(
         DataTypes.ProjectInvestor memory projectInvestor,
         bytes calldata moduleData,
-        address investNFTImpl,
+        // address investNFTImpl,
         address[] calldata erc20s,
         uint256[] calldata amounts,
         mapping(uint256 => DataTypes.ProfileStruct) storage _profileById,
@@ -195,26 +198,29 @@ library FundingLogic {
         tokenId = _deployAndMintInvestNFT(
             projectInvestor,
             _profileById[projectInvestor.profileId].handle,
-            _projectByIdByProfile[projectInvestor.profileId][projectInvestor.projectId].investNFT,
-            investNFTImpl
+            // _projectByIdByProfile[projectInvestor.profileId][projectInvestor.projectId].investNFT,
+            _projectByIdByProfile //,
+            // investNFTImpl
         );
 
-        // _processInvestPayments(investor, profileId, projectId, moduleData, investModule);
-        // Process via module
-        // if module is set, send any native currency in tx to module
-        // send to owner wallet otherwise
-        address investModule = _projectByIdByProfile[projectInvestor.profileId][
-            projectInvestor.projectId
-        ].investModule;
-        if (investModule != address(0)) {
-            _transferFundsTo(investModule, msg.value, erc20s, amounts);
-            IInvestModule(investModule).process(
-                projectInvestor.investor,
-                projectInvestor.profileId,
-                projectInvestor.projectId,
-                moduleData
-            );
-        } else {
+        {
+            // _processInvestPayments(investor, profileId, projectId, moduleData, investModule);
+            // Process via module
+            // if module is set, send any native currency in tx to module
+            // send to owner wallet otherwise
+            address investModule = _projectByIdByProfile[projectInvestor.profileId][
+                projectInvestor.projectId
+            ].investModule;
+            if (investModule != address(0)) {
+                // _transferFundsTo(investModule, msg.value, erc20s, amounts);
+                IInvestModule(investModule).process(
+                    projectInvestor.investor,
+                    projectInvestor.profileId,
+                    projectInvestor.projectId,
+                    moduleData
+                );
+            }
+
             _transferFundsTo(
                 IBuidlHub(address(this)).ownerOf(projectInvestor.profileId),
                 msg.value,
@@ -223,15 +229,21 @@ library FundingLogic {
             );
         }
 
-        _emitInvestedEvent(
-            projectInvestor.investor,
-            projectInvestor.profileId,
-            projectInvestor.projectId,
-            moduleData,
-            msg.value,
-            erc20s,
-            amounts
-        );
+        {
+            _emitInvestedEvent(
+                projectInvestor.investor,
+                projectInvestor.profileId,
+                projectInvestor.projectId,
+                moduleData,
+                msg.value,
+                erc20s,
+                amounts,
+                tokenId
+                // ,
+                // _projectByIdByProfile[projectInvestor.profileId][projectInvestor.projectId]
+                //     .investNFT
+            );
+        }
 
         return tokenId;
     }
@@ -239,9 +251,19 @@ library FundingLogic {
     function _deployAndMintInvestNFT(
         DataTypes.ProjectInvestor memory projectInvestor,
         string memory handle,
-        address investNFT,
-        address investNFTImpl
-    ) internal returns (uint256 tokenId) {
+        mapping(uint256 => mapping(uint256 => DataTypes.ProjectStruct))
+            storage _projectByIdByProfile //,
+    )
+        internal
+        returns (
+            // address investNFTImpl
+            uint256 tokenId
+        )
+    {
+        address investNFTImpl = IBuidlHub(address(this)).getInvestNFTImpl();
+        address investNFT = _projectByIdByProfile[projectInvestor.profileId][
+            projectInvestor.projectId
+        ].investNFT;
         if (investNFT == address(0)) {
             investNFT = _deployInvestNFT(
                 projectInvestor.profileId,
@@ -249,6 +271,8 @@ library FundingLogic {
                 handle,
                 investNFTImpl
             );
+            _projectByIdByProfile[projectInvestor.profileId][projectInvestor.projectId]
+                .investNFT = investNFT;
         }
         tokenId = IInvestNFT(investNFT).mint(projectInvestor.investor);
     }
@@ -303,7 +327,8 @@ library FundingLogic {
         bytes calldata moduleData,
         uint256 value,
         address[] calldata erc20s,
-        uint256[] calldata amounts
+        uint256[] calldata amounts,
+        uint256 tokenId // , // address investNFT
     ) private {
         emit Events.Invested(
             investor,
@@ -315,6 +340,8 @@ library FundingLogic {
             value,
             erc20s,
             amounts,
+            tokenId,
+            // investNFT,
             block.timestamp
         );
     }

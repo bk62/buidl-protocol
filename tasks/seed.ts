@@ -1,7 +1,7 @@
 import fs from "fs";
 
 import "@nomiclabs/hardhat-ethers";
-import { hexlify, RLP, keccak256 } from "ethers/lib/utils";
+import { hexlify, RLP, keccak256, AbiCoder } from "ethers/lib/utils";
 import { task } from "hardhat/config";
 import { HardhatRuntimeEnvironment, TaskArguments } from "hardhat/types"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
@@ -44,7 +44,8 @@ task("seed", "Seed some data").setAction(
         }
 
         console.log("whitelist and set aToken for mockERC20s")
-        await waitForTx(buildHub.connect(governance).whitelistERC20(mockErc20.address, true));
+        // whitelisted in deploy
+        // await waitForTx(buildHub.connect(governance).whitelistERC20(mockErc20.address, true));
         await waitForTx(buildHub.connect(governance).setAaveaToken(mockErc20.address,
             (await deployments.get("MockaToken")).address
         ))
@@ -52,19 +53,29 @@ task("seed", "Seed some data").setAction(
 
 
         console.log("creating profiles, projects, yield trusts")
+        const backModule = (await deployments.get("BackERC20ICOModule")).address
+        const investModule = (await deployments.get("BackerOnlyInvestModule")).address
+
         let profileIx = 0;
+        const abiCoder = new AbiCoder();
         for (const user of accounts.slice(2)) {
             // await waitForTx(buildHub.connect(governance).whitelistProfileCreator(user.address, true));
 
+            const backModuleInitData = abiCoder.encode(
+                // name, symbol, tokenPriceInUsd 
+                ["string", "string", "uint256"],
+                [`profile-${profileIx}-bucks`, `P${profileIx}`, utils.parseEther("1")]
+            )
             const profileData: DataTypes.CreateProfileDataStruct = {
                 to: user.address,
                 handle: `profile-${user.address.toLowerCase().slice(0, 10)}`,
                 metadataURI: "ipfs://bafyreibfy74drzhxcnguhognxlebqg4hsrbyccddt5xjejr7xdwzobwy4u/metadata.json",
-                backModule: ZERO_ADDRESS,
-                backModuleInitData: ZERO_ADDRESS,
+                backModule: backModule,
+                backModuleInitData: backModuleInitData,
                 // endorsedByModule: ZERO_ADDRESS,
                 // endorsedByModuleInitData: ZERO_ADDRESS,
-                profileType: 0
+                profileType: 0,
+                githubUsername: "patrickalphac"
             };
             const tx = await buildHub.connect(user).createProfile(profileData)
             const rc = await tx.wait();
@@ -95,8 +106,9 @@ task("seed", "Seed some data").setAction(
                 projectSize: 0,
                 projectState: 0,
                 projectType: 0,
-                investModule: ZERO_ADDRESS,
-                investModuleInitData: ZERO_ADDRESS
+                investModule: investModule,
+                investModuleInitData: ZERO_ADDRESS,
+                githubRepoName: "hardhat-nft-fcc"
             };
             await waitForTx(buildHub.connect(user).createProject(projectData));
         }

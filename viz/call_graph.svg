@@ -1,0 +1,851 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="873pt" height="3780pt" viewBox="0.00 0.00 873.33 3780.00">
+<g id="graph0" class="graph" transform="translate(-1900.3598022460938,3969.3815155029297) scale(4)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-3776 869.33,-3776 869.33,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterBuidlHub">
+
+<path fill="#445773" stroke="#445773" d="M20,-896C20,-896 765.41,-896 765.41,-896 771.41,-896 777.41,-902 777.41,-908 777.41,-908 777.41,-3615 777.41,-3615 777.41,-3621 771.41,-3627 765.41,-3627 765.41,-3627 20,-3627 20,-3627 14,-3627 8,-3621 8,-3615 8,-3615 8,-908 8,-908 8,-902 14,-896 20,-896" style=""/>
+<text text-anchor="middle" x="392.71" y="-3610.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">BuidlHub</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterErrors">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M602.77,-240C602.77,-240 845.33,-240 845.33,-240 851.33,-240 857.33,-246 857.33,-252 857.33,-252 857.33,-521 857.33,-521 857.33,-527 851.33,-533 845.33,-533 845.33,-533 602.77,-533 602.77,-533 596.77,-533 590.77,-527 590.77,-521 590.77,-521 590.77,-252 590.77,-252 590.77,-246 596.77,-240 602.77,-240" style=""/>
+<text text-anchor="middle" x="724.05" y="-516.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">Errors</text>
+</g>
+<g id="clust3" class="cluster" data-name="clusterEvents">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M617.26,-541C617.26,-541 830.85,-541 830.85,-541 836.85,-541 842.85,-547 842.85,-553 842.85,-553 842.85,-876 842.85,-876 842.85,-882 836.85,-888 830.85,-888 830.85,-888 617.26,-888 617.26,-888 611.26,-888 605.26,-882 605.26,-876 605.26,-876 605.26,-553 605.26,-553 605.26,-547 611.26,-541 617.26,-541" style=""/>
+<text text-anchor="middle" x="724.05" y="-871.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">Events</text>
+</g>
+<g id="clust4" class="cluster" data-name="clusterBuidlingLogic">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M365.57,-703C365.57,-703 500.86,-703 500.86,-703 506.86,-703 512.86,-709 512.86,-715 512.86,-715 512.86,-876 512.86,-876 512.86,-882 506.86,-888 500.86,-888 500.86,-888 365.57,-888 365.57,-888 359.57,-888 353.57,-882 353.57,-876 353.57,-876 353.57,-715 353.57,-715 353.57,-709 359.57,-703 365.57,-703" style=""/>
+<text text-anchor="middle" x="433.21" y="-871.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">BuidlingLogic</text>
+</g>
+<g id="clust5" class="cluster" data-name="clusterFundingLogic">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M328.02,-402C328.02,-402 538.41,-402 538.41,-402 544.41,-402 550.41,-408 550.41,-414 550.41,-414 550.41,-683 550.41,-683 550.41,-689 544.41,-695 538.41,-695 538.41,-695 328.02,-695 328.02,-695 322.02,-695 316.02,-689 316.02,-683 316.02,-683 316.02,-414 316.02,-414 316.02,-408 322.02,-402 328.02,-402" style=""/>
+<text text-anchor="middle" x="433.21" y="-678.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">FundingLogic</text>
+</g>
+<g id="clust6" class="cluster" data-name="cluster_aavePoolAddressProvider">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M361.67,-317C361.67,-317 505.76,-317 505.76,-317 511.76,-317 517.76,-323 517.76,-329 517.76,-329 517.76,-382 517.76,-382 517.76,-388 511.76,-394 505.76,-394 505.76,-394 361.67,-394 361.67,-394 355.67,-394 349.67,-388 349.67,-382 349.67,-382 349.67,-329 349.67,-329 349.67,-323 355.67,-317 361.67,-317" style=""/>
+<text text-anchor="middle" x="433.71" y="-377.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">_aavePoolAddressProvider</text>
+</g>
+<g id="clust7" class="cluster" data-name="clusterMultiState">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M408.47,-232C408.47,-232 458.95,-232 458.95,-232 464.95,-232 470.95,-238 470.95,-244 470.95,-244 470.95,-297 470.95,-297 470.95,-303 464.95,-309 458.95,-309 458.95,-309 408.47,-309 408.47,-309 402.47,-309 396.47,-303 396.47,-297 396.47,-297 396.47,-244 396.47,-244 396.47,-238 402.47,-232 408.47,-232" style=""/>
+<text text-anchor="middle" x="433.71" y="-292.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">MultiState</text>
+</g>
+<g id="clust8" class="cluster" data-name="clusterDataTypes">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M367.18,-147C367.18,-147 499.25,-147 499.25,-147 505.25,-147 511.25,-153 511.25,-159 511.25,-159 511.25,-212 511.25,-212 511.25,-218 505.25,-224 499.25,-224 499.25,-224 367.18,-224 367.18,-224 361.18,-224 355.18,-218 355.18,-212 355.18,-212 355.18,-159 355.18,-159 355.18,-153 361.18,-147 367.18,-147" style=""/>
+<text text-anchor="middle" x="433.21" y="-207.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">DataTypes</text>
+</g>
+<g id="clust9" class="cluster" data-name="clusterTokenURILogic">
+
+<path fill="#3b4b63" stroke="rgb(64,67,88)" stroke-dasharray="5,2" d="M331.23,-8C331.23,-8 535.19,-8 535.19,-8 541.19,-8 547.19,-14 547.19,-20 547.19,-20 547.19,-127 547.19,-127 547.19,-133 541.19,-139 535.19,-139 535.19,-139 331.23,-139 331.23,-139 325.23,-139 319.23,-133 319.23,-127 319.23,-127 319.23,-20 319.23,-20 319.23,-14 325.23,-8 331.23,-8" style=""/>
+<text text-anchor="middle" x="433.21" y="-122.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">TokenURILogic</text>
+</g>
+<g id="clust10" class="cluster" data-name="cluster_01">
+
+<polygon fill="rgb(46,62,86)" stroke="rgb(41,55,77)" points="68.83,-3635 68.83,-3764 468.21,-3764 468.21,-3635 68.83,-3635" style=""/>
+<text text-anchor="middle" x="268.52" y="-3747.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- BuidlHub.onlyGov -->
+<g id="node1" class="node" pointer-events="visible" data-name="BuidlHub.onlyGov">
+
+<polygon fill="rgb(65,73,86)" stroke="rgb(44,75,94)" stroke-width="3" points="190.38,-3510.54 190.38,-3525.46 161.94,-3536 121.71,-3536 93.27,-3525.46 93.27,-3510.54 121.71,-3500 161.94,-3500 190.38,-3510.54" style=""/>
+<polygon fill="none" stroke="rgb(44,75,94)" stroke-width="3" points="194.39,-3507.76 194.39,-3528.24 162.66,-3540 120.99,-3540 89.27,-3528.24 89.27,-3507.76 120.99,-3496 162.66,-3496 194.39,-3507.76" style=""/>
+<text text-anchor="middle" x="141.83" y="-3513.8" font-family="Times,serif" font-size="14.00" style="">onlyGov</text>
+</g>
+<!-- BuidlHub._validateCallerIsGovernance -->
+<g id="node54" class="node" pointer-events="visible" data-name="BuidlHub._validateCallerIsGovernance">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-3190" rx="123.8" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-3185.8" font-family="Times,serif" font-size="14.00" style="">_validateCallerIsGovernance</text>
+</g>
+<!-- BuidlHub.onlyGov&#45;&gt;BuidlHub._validateCallerIsGovernance -->
+<g id="edge1" class="edge" data-name="BuidlHub.onlyGov-&gt;BuidlHub._validateCallerIsGovernance">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M194.38,-3518.13C220.05,-3515.36 249.41,-3507.38 267.65,-3487 348.38,-3396.78 221.29,-3305.73 303.65,-3217 308.18,-3212.12 313.35,-3208 318.96,-3204.53" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="320.95,-3207.43 328.09,-3199.6 317.63,-3201.27 320.95,-3207.43" style=""/>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt; -->
+<g id="node2" class="node" pointer-events="visible" data-name="BuidlHub.&lt;Constructor&gt;">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-3082" rx="67.55" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3077.8" font-family="Times,serif" font-size="14.00" style="">&lt;Constructor&gt;</text>
+</g>
+<!-- BuidlHub._setGovernance -->
+<g id="node51" class="node" pointer-events="visible" data-name="BuidlHub._setGovernance">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-3136" rx="73.48" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-3131.8" font-family="Times,serif" font-size="14.00" style="">_setGovernance</text>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt;&#45;&gt;BuidlHub._setGovernance -->
+<g id="edge7" class="edge" data-name="BuidlHub.&lt;Constructor&gt;-&gt;BuidlHub._setGovernance">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M197.6,-3092.22C244.91,-3101.05 313.48,-3113.84 364.28,-3123.32" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="363.72,-3126.78 374.19,-3125.17 365,-3119.9 363.72,-3126.78" style=""/>
+</g>
+<!-- BuidlHub._setState -->
+<g id="node56" class="node" pointer-events="visible" data-name="BuidlHub._setState">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-3082" rx="45.8" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-3077.8" font-family="Times,serif" font-size="14.00" style="">_setState</text>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt;&#45;&gt;BuidlHub._setState -->
+<g id="edge6" class="edge" data-name="BuidlHub.&lt;Constructor&gt;-&gt;BuidlHub._setState">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M209.58,-3082C260.28,-3082 329.17,-3082 376.83,-3082" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="376.96,-3085.5 386.96,-3082 376.96,-3078.5 376.96,-3085.5" style=""/>
+</g>
+<!-- Errors.ConstructorParamsInvalid -->
+<g id="node60" class="node" pointer-events="visible" data-name="Errors.ConstructorParamsInvalid">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-374" rx="112.33" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-369.8" font-family="Times,serif" font-size="14.00" style="">ConstructorParamsInvalid</text>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt;&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge2" class="edge" data-name="BuidlHub.&lt;Constructor&gt;-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M167.43,-3065.32C196.11,-3058.87 242.77,-3056.16 267.65,-3028 326.89,-2960.95 268.18,-2709.14 303.65,-2627 372.44,-2467.71 500.02,-2496.76 562.77,-2335 582.47,-2284.21 556.02,-415.95 590.77,-374 616.57,-342.87 667.66,-341.43 698.25,-352.07" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="697.19,-355.42 707.77,-356.11 699.93,-348.98 697.19,-355.42" style=""/>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt;&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge3" class="edge" data-name="BuidlHub.&lt;Constructor&gt;-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M204.17,-3074.98C227.33,-3071.48 251.87,-3063.86 267.65,-3046 326.89,-2978.95 268.18,-2727.14 303.65,-2645 372.44,-2485.71 500.02,-2514.76 562.77,-2353 582.47,-2302.21 556.02,-433.95 590.77,-392 594.42,-387.6 598.57,-383.79 603.09,-380.52" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="605.01,-383.45 611.62,-375.17 601.29,-377.52 605.01,-383.45" style=""/>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt;&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge4" class="edge" data-name="BuidlHub.&lt;Constructor&gt;-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M197.75,-3092.12C222.69,-3090.81 250.4,-3083.52 267.65,-3064 326.89,-2996.95 268.18,-2745.14 303.65,-2663 372.44,-2503.71 500.02,-2532.76 562.77,-2371 582.47,-2320.21 556.02,-451.95 590.77,-410 599.29,-399.72 610.57,-392.67 622.96,-387.84" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="624.28,-391.08 632.62,-384.55 622.03,-384.46 624.28,-391.08" style=""/>
+</g>
+<!-- BuidlHub.&lt;Constructor&gt;&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge5" class="edge" data-name="BuidlHub.&lt;Constructor&gt;-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M157.46,-3099.59C183.93,-3113.15 239.61,-3113.74 267.65,-3082 326.89,-3014.95 268.18,-2763.14 303.65,-2681 372.44,-2521.71 500.02,-2550.76 562.77,-2389 582.47,-2338.21 556.02,-469.95 590.77,-428 611.64,-402.81 649.06,-397.06 678.79,-392.67" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="679.58,-396.09 688.95,-391.14 678.54,-389.17 679.58,-396.09" style=""/>
+</g>
+<!-- BuidlHub.setGovernance -->
+<g id="node3" class="node" pointer-events="visible" data-name="BuidlHub.setGovernance">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3460" rx="68.32" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3455.8" font-family="Times,serif" font-size="14.00" style="">setGovernance</text>
+</g>
+<!-- BuidlHub.setGovernance&#45;&gt;BuidlHub._setGovernance -->
+<g id="edge8" class="edge" data-name="BuidlHub.setGovernance-&gt;BuidlHub._setGovernance">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M210.27,-3460.04C231.39,-3456.59 252.99,-3448.89 267.65,-3433 349.74,-3344.02 221.29,-3251.73 303.65,-3163 315.71,-3150 332.31,-3142.41 349.56,-3138.14" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="350.71,-3141.48 359.77,-3135.99 349.27,-3134.63 350.71,-3141.48" style=""/>
+</g>
+<!-- BuidlHub.setState -->
+<g id="node4" class="node" pointer-events="visible" data-name="BuidlHub.setState">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3406" rx="41.15" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3401.8" font-family="Times,serif" font-size="14.00" style="">setState</text>
+</g>
+<!-- BuidlHub.setState&#45;&gt;BuidlHub._setState -->
+<g id="edge9" class="edge" data-name="BuidlHub.setState-&gt;BuidlHub._setState">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M182.63,-3408.47C210.48,-3407.88 246.38,-3402.06 267.65,-3379 349.74,-3290.02 221.29,-3197.73 303.65,-3109 322.21,-3089 351.5,-3081.8 377.43,-3079.8" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="377.75,-3083.29 387.55,-3079.26 377.38,-3076.3 377.75,-3083.29" style=""/>
+</g>
+<!-- BuidlHub.whitelistProfileCreator -->
+<g id="node5" class="node" pointer-events="visible" data-name="BuidlHub.whitelistProfileCreator">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3244" rx="99.58" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3239.8" font-family="Times,serif" font-size="14.00" style="">whitelistProfileCreator</text>
+</g>
+<!-- Events.ProfileCreatorWhitelisted -->
+<g id="node65" class="node" pointer-events="visible" data-name="Events.ProfileCreatorWhitelisted">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-621" rx="110.59" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-616.8" font-family="Times,serif" font-size="14.00" style="">ProfileCreatorWhitelisted</text>
+</g>
+<!-- BuidlHub.whitelistProfileCreator&#45;&gt;Events.ProfileCreatorWhitelisted -->
+<g id="edge10" class="edge" data-name="BuidlHub.whitelistProfileCreator-&gt;Events.ProfileCreatorWhitelisted">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M235.82,-3238.01C247.95,-3233.47 259.11,-3226.76 267.65,-3217 333.57,-3141.67 236.62,-2842.33 303.65,-2768 382.09,-2681.02 487.27,-2809.54 562.77,-2720 636.99,-2631.99 517.36,-736.68 590.77,-648 596.36,-641.25 603.13,-635.9 610.63,-631.68" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="612.29,-634.76 619.73,-627.23 609.21,-628.47 612.29,-634.76" style=""/>
+</g>
+<!-- BuidlHub.whitelistBackModule -->
+<g id="node6" class="node" pointer-events="visible" data-name="BuidlHub.whitelistBackModule">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3190" rx="94.36" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3185.8" font-family="Times,serif" font-size="14.00" style="">whitelistBackModule</text>
+</g>
+<!-- Events.BackModuleWhitelisted -->
+<g id="node66" class="node" pointer-events="visible" data-name="Events.BackModuleWhitelisted">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-567" rx="105.37" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-562.8" font-family="Times,serif" font-size="14.00" style="">BackModuleWhitelisted</text>
+</g>
+<!-- BuidlHub.whitelistBackModule&#45;&gt;Events.BackModuleWhitelisted -->
+<g id="edge11" class="edge" data-name="BuidlHub.whitelistBackModule-&gt;Events.BackModuleWhitelisted">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M232.68,-3185.12C246.02,-3180.59 258.37,-3173.59 267.65,-3163 332.74,-3088.71 236.1,-2792.06 303.65,-2720 383.26,-2635.08 486.08,-2769.56 562.77,-2682 639.21,-2594.73 516.8,-683.37 590.77,-594 597.04,-586.43 604.8,-580.61 613.4,-576.18" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="614.94,-579.33 622.64,-572.05 612.09,-572.94 614.94,-579.33" style=""/>
+</g>
+<!-- BuidlHub.whitelistInvestModule -->
+<g id="node7" class="node" pointer-events="visible" data-name="BuidlHub.whitelistInvestModule">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3352" rx="97.88" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3347.8" font-family="Times,serif" font-size="14.00" style="">whitelistInvestModule</text>
+</g>
+<!-- Events.InvestModuleWhitelisted -->
+<g id="node67" class="node" pointer-events="visible" data-name="Events.InvestModuleWhitelisted">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-729" rx="109.39" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-724.8" font-family="Times,serif" font-size="14.00" style="">InvestModuleWhitelisted</text>
+</g>
+<!-- BuidlHub.whitelistInvestModule&#45;&gt;Events.InvestModuleWhitelisted -->
+<g id="edge12" class="edge" data-name="BuidlHub.whitelistInvestModule-&gt;Events.InvestModuleWhitelisted">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M234.94,-3346.41C247.43,-3341.85 258.92,-3335.04 267.65,-3325 338.72,-3243.29 230.62,-2918.96 303.65,-2839 382.38,-2752.8 486.67,-2884.53 562.77,-2796 636.66,-2710.05 518.49,-843.3 590.77,-756 596.58,-748.98 603.68,-743.47 611.54,-739.18" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="613.17,-742.28 620.7,-734.83 610.17,-735.95 613.17,-742.28" style=""/>
+</g>
+<!-- BuidlHub.whitelistERC20 -->
+<g id="node8" class="node" pointer-events="visible" data-name="BuidlHub.whitelistERC20">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3298" rx="72.97" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3293.8" font-family="Times,serif" font-size="14.00" style="">whitelistERC20</text>
+</g>
+<!-- Events.ERC20Whitelisted -->
+<g id="node68" class="node" pointer-events="visible" data-name="Events.ERC20Whitelisted">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-675" rx="83.98" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-670.8" font-family="Times,serif" font-size="14.00" style="">ERC20Whitelisted</text>
+</g>
+<!-- BuidlHub.whitelistERC20&#45;&gt;Events.ERC20Whitelisted -->
+<g id="edge13" class="edge" data-name="BuidlHub.whitelistERC20-&gt;Events.ERC20Whitelisted">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M214.7,-3297.83C234.58,-3294.11 254.32,-3286.3 267.65,-3271 337.19,-3191.19 231.46,-2873.43 303.65,-2796 383.03,-2710.87 486.07,-2845.55 562.77,-2758 638.04,-2672.07 517.92,-789.99 590.77,-702 600.83,-689.86 614.73,-682.23 629.77,-677.59" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="631,-680.88 639.78,-674.95 629.22,-674.11 631,-680.88" style=""/>
+</g>
+<!-- BuidlHub.setAavePoolAddressProvider -->
+<g id="node9" class="node" pointer-events="visible" data-name="BuidlHub.setAavePoolAddressProvider">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3028" rx="124.51" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3023.8" font-family="Times,serif" font-size="14.00" style="">setAavePoolAddressProvider</text>
+</g>
+<!-- BuidlHub.IAavePoolAddressesProvider -->
+<g id="node57" class="node" pointer-events="visible" data-name="BuidlHub.IAavePoolAddressesProvider">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-3028" rx="125.08" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-3023.8" font-family="Times,serif" font-size="14.00" style="">IAavePoolAddressesProvider</text>
+</g>
+<!-- BuidlHub.setAavePoolAddressProvider&#45;&gt;BuidlHub.IAavePoolAddressesProvider -->
+<g id="edge15" class="edge" data-name="BuidlHub.setAavePoolAddressProvider-&gt;BuidlHub.IAavePoolAddressesProvider">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M266.81,-3028C276.94,-3028 287.2,-3028 297.4,-3028" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="297.56,-3031.5 307.56,-3028 297.56,-3024.5 297.56,-3031.5" style=""/>
+</g>
+<!-- BuidlHub.setAavePoolAddressProvider&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge14" class="edge" data-name="BuidlHub.setAavePoolAddressProvider-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M245.22,-3017.92C253.67,-3013.69 261.37,-3008.17 267.65,-3001 332.18,-2927.4 273.5,-2655.12 303.65,-2562 372.15,-2350.44 501.26,-2347.69 562.77,-2134 576.09,-2087.73 560.02,-438.05 590.77,-401 596.14,-394.53 602.6,-389.35 609.74,-385.21" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="611.74,-388.12 619.12,-380.52 608.61,-381.86 611.74,-388.12" style=""/>
+</g>
+<!-- BuidlHub.setAaveaToken -->
+<g id="node10" class="node" pointer-events="visible" data-name="BuidlHub.setAaveaToken">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2866" rx="71.19" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2861.8" font-family="Times,serif" font-size="14.00" style="">setAaveaToken</text>
+</g>
+<!-- BuidlHub.setAaveaToken&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge16" class="edge" data-name="BuidlHub.setAaveaToken-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M212.96,-2866.03C233.38,-2862.42 253.87,-2854.63 267.65,-2839 328.14,-2770.4 281.68,-2517.78 303.65,-2429 375.1,-2140.29 501.14,-2102.97 562.77,-1812 579.02,-1735.3 540.59,-461.24 590.77,-401 596.15,-394.54 602.62,-389.36 609.77,-385.23" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="611.77,-388.15 619.15,-380.54 608.64,-381.88 611.77,-388.15" style=""/>
+</g>
+<!-- BuidlHub.setPriceFeed -->
+<g id="node11" class="node" pointer-events="visible" data-name="BuidlHub.setPriceFeed">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3136" rx="60.26" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3131.8" font-family="Times,serif" font-size="14.00" style="">setPriceFeed</text>
+</g>
+<!-- BuidlHub.setPriceFeed&#45;&gt;Errors.ConstructorParamsInvalid -->
+<g id="edge17" class="edge" data-name="BuidlHub.setPriceFeed-&gt;Errors.ConstructorParamsInvalid">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M201.96,-3137.62C225.78,-3135.02 251.41,-3127.49 267.65,-3109 330.51,-3037.47 250.64,-2761.11 303.65,-2682 375.71,-2574.46 494.58,-2659.03 562.77,-2549 625.64,-2447.56 514.69,-492.95 590.77,-401 596.13,-394.52 602.58,-389.33 609.72,-385.19" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="611.72,-388.11 619.09,-380.49 608.58,-381.85 611.72,-388.11" style=""/>
+</g>
+<!-- BuidlHub.createProfile -->
+<g id="node12" class="node" pointer-events="visible" data-name="BuidlHub.createProfile">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2812" rx="60.23" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2807.8" font-family="Times,serif" font-size="14.00" style="">createProfile</text>
+</g>
+<!-- BuidlHub._safeMint -->
+<g id="node58" class="node" pointer-events="visible" data-name="BuidlHub._safeMint">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-2920" rx="50.39" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-2915.8" font-family="Times,serif" font-size="14.00" style="">_safeMint</text>
+</g>
+<!-- BuidlHub.createProfile&#45;&gt;BuidlHub._safeMint -->
+<g id="edge19" class="edge" data-name="BuidlHub.createProfile-&gt;BuidlHub._safeMint">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M201.16,-2815.32C223.49,-2818.87 248.23,-2825.77 267.65,-2839 291.49,-2855.24 279.76,-2876.83 303.65,-2893 323.89,-2906.69 349.71,-2913.66 372.89,-2917.12" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="372.61,-2920.61 382.98,-2918.44 373.52,-2913.67 372.61,-2920.61" style=""/>
+</g>
+<!-- Errors.ProfileCreatorNotWhitelisted -->
+<g id="node61" class="node" pointer-events="visible" data-name="Errors.ProfileCreatorNotWhitelisted">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-320" rx="125.06" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-315.8" font-family="Times,serif" font-size="14.00" style="">ProfileCreatorNotWhitelisted</text>
+</g>
+<!-- BuidlHub.createProfile&#45;&gt;Errors.ProfileCreatorNotWhitelisted -->
+<g id="edge18" class="edge" data-name="BuidlHub.createProfile-&gt;Errors.ProfileCreatorNotWhitelisted">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M202.06,-2814.02C226.05,-2811.51 251.77,-2803.95 267.65,-2785 302.39,-2743.54 294.2,-1865.26 303.65,-1812 368.74,-1445.26 496.78,-1381.58 562.77,-1015 575.93,-941.89 542.59,-403.55 590.77,-347 595.11,-341.91 600.13,-337.61 605.62,-334.01" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="607.65,-336.88 614.6,-328.88 604.18,-330.8 607.65,-336.88" style=""/>
+</g>
+<!-- BuidlingLogic.createProfile -->
+<g id="node71" class="node" pointer-events="visible" data-name="BuidlingLogic.createProfile">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-729" rx="60.23" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-724.8" font-family="Times,serif" font-size="14.00" style="">createProfile</text>
+</g>
+<!-- BuidlHub.createProfile&#45;&gt;BuidlingLogic.createProfile -->
+<g id="edge20" class="edge" data-name="BuidlHub.createProfile-&gt;BuidlingLogic.createProfile">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M201.92,-2814.2C226.02,-2811.75 251.89,-2804.19 267.65,-2785 339.22,-2697.89 231.82,-842.9 303.65,-756 318.14,-738.47 340.85,-730.5 363.18,-727.3" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="363.84,-730.75 373.38,-726.15 363.05,-723.8 363.84,-730.75" style=""/>
+</g>
+<!-- BuidlHub.setDefaultProfile -->
+<g id="node13" class="node" pointer-events="visible" data-name="BuidlHub.setDefaultProfile">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-3576" rx="77.01" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-3571.8" font-family="Times,serif" font-size="14.00" style="">setDefaultProfile</text>
+</g>
+<!-- BuidlHub._setDefaultProfile -->
+<g id="node52" class="node" pointer-events="visible" data-name="BuidlHub._setDefaultProfile">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-3244" rx="81.66" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-3239.8" font-family="Times,serif" font-size="14.00" style="">_setDefaultProfile</text>
+</g>
+<!-- BuidlHub.setDefaultProfile&#45;&gt;BuidlHub._setDefaultProfile -->
+<g id="edge21" class="edge" data-name="BuidlHub.setDefaultProfile-&gt;BuidlHub._setDefaultProfile">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M215.99,-3570.97C234.21,-3566.94 252.76,-3560.19 267.65,-3549 363.16,-3477.22 409.51,-3333.28 425.5,-3272.32" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="428.99,-3272.82 428.06,-3262.27 422.2,-3271.1 428.99,-3272.82" style=""/>
+</g>
+<!-- BuidlHub.setBackModule -->
+<g id="node14" class="node" pointer-events="visible" data-name="BuidlHub.setBackModule">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2974" rx="71.79" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2969.8" font-family="Times,serif" font-size="14.00" style="">setBackModule</text>
+</g>
+<!-- BuidlHub._validateCallerIsProfileOwner -->
+<g id="node55" class="node" pointer-events="visible" data-name="BuidlHub._validateCallerIsProfileOwner">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-2974" rx="129.62" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-2969.8" font-family="Times,serif" font-size="14.00" style="">_validateCallerIsProfileOwner</text>
+</g>
+<!-- BuidlHub.setBackModule&#45;&gt;BuidlHub._validateCallerIsProfileOwner -->
+<g id="edge22" class="edge" data-name="BuidlHub.setBackModule-&gt;BuidlHub._validateCallerIsProfileOwner">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M213.62,-2974C237.76,-2974 265.65,-2974 293.27,-2974" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="293.42,-2977.5 303.42,-2974 293.42,-2970.5 293.42,-2977.5" style=""/>
+</g>
+<!-- BuidlingLogic.setBackModule -->
+<g id="node72" class="node" pointer-events="visible" data-name="BuidlingLogic.setBackModule">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-837" rx="71.79" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-832.8" font-family="Times,serif" font-size="14.00" style="">setBackModule</text>
+</g>
+<!-- BuidlHub.setBackModule&#45;&gt;BuidlingLogic.setBackModule -->
+<g id="edge23" class="edge" data-name="BuidlHub.setBackModule-&gt;BuidlingLogic.setBackModule">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M213.63,-2974.6C234.08,-2971.02 254.42,-2963.11 267.65,-2947 340.13,-2858.77 239.93,-986.75 303.65,-892 317.52,-871.38 340.86,-858.45 363.87,-850.37" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="365.25,-853.6 373.69,-847.19 363.09,-846.94 365.25,-853.6" style=""/>
+</g>
+<!-- BuidlHub.createProject -->
+<g id="node15" class="node" pointer-events="visible" data-name="BuidlHub.createProject">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2920" rx="61.37" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2915.8" font-family="Times,serif" font-size="14.00" style="">createProject</text>
+</g>
+<!-- BuidlHub.createProject&#45;&gt;BuidlHub._validateCallerIsProfileOwner -->
+<g id="edge24" class="edge" data-name="BuidlHub.createProject-&gt;BuidlHub._validateCallerIsProfileOwner">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M194.23,-2929.59C236.02,-2937.39 295.9,-2948.56 345.14,-2957.75" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="344.68,-2961.23 355.15,-2959.62 345.97,-2954.35 344.68,-2961.23" style=""/>
+</g>
+<!-- BuidlingLogic.createProject -->
+<g id="node73" class="node" pointer-events="visible" data-name="BuidlingLogic.createProject">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-783" rx="61.37" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-778.8" font-family="Times,serif" font-size="14.00" style="">createProject</text>
+</g>
+<!-- BuidlHub.createProject&#45;&gt;BuidlingLogic.createProject -->
+<g id="edge25" class="edge" data-name="BuidlHub.createProject-&gt;BuidlingLogic.createProject">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M202.89,-2922.1C226.72,-2919.55 252.1,-2911.93 267.65,-2893 341.1,-2803.55 229.93,-899.22 303.65,-810 317.95,-792.7 340.26,-784.71 362.3,-781.43" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="362.86,-784.88 372.38,-780.23 362.04,-777.93 362.86,-784.88" style=""/>
+</g>
+<!-- BuidlHub.createYieldTrust -->
+<g id="node16" class="node" pointer-events="visible" data-name="BuidlHub.createYieldTrust">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2650" rx="75.84" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2645.8" font-family="Times,serif" font-size="14.00" style="">createYieldTrust</text>
+</g>
+<!-- FundingLogic.createYieldTrust -->
+<g id="node74" class="node" pointer-events="visible" data-name="FundingLogic.createYieldTrust">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-644" rx="75.84" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-639.8" font-family="Times,serif" font-size="14.00" style="">createYieldTrust</text>
+</g>
+<!-- BuidlHub.createYieldTrust&#45;&gt;FundingLogic.createYieldTrust -->
+<g id="edge26" class="edge" data-name="BuidlHub.createYieldTrust-&gt;FundingLogic.createYieldTrust">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M217.86,-2649.78C236.85,-2645.88 255.33,-2637.98 267.65,-2623 335.56,-2540.43 243.94,-787.68 303.65,-699 317.24,-678.83 339.88,-666.02 362.41,-657.9" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="363.65,-661.18 372.03,-654.7 361.44,-654.54 363.65,-661.18" style=""/>
+</g>
+<!-- BuidlHub.emitYieldTrustDepositEvent -->
+<g id="node17" class="node" pointer-events="visible" data-name="BuidlHub.emitYieldTrustDepositEvent">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2542" rx="122.71" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2537.8" font-family="Times,serif" font-size="14.00" style="">emitYieldTrustDepositEvent</text>
+</g>
+<!-- FundingLogic.emitYieldTrustDeposited -->
+<g id="node75" class="node" pointer-events="visible" data-name="FundingLogic.emitYieldTrustDeposited">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-590" rx="109.39" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-585.8" font-family="Times,serif" font-size="14.00" style="">emitYieldTrustDeposited</text>
+</g>
+<!-- BuidlHub.emitYieldTrustDepositEvent&#45;&gt;FundingLogic.emitYieldTrustDeposited -->
+<g id="edge27" class="edge" data-name="BuidlHub.emitYieldTrustDepositEvent-&gt;FundingLogic.emitYieldTrustDeposited">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M245.69,-2532.32C254.05,-2528.01 261.59,-2522.36 267.65,-2515 334.65,-2433.55 236.41,-698.25 303.65,-617 308.97,-610.58 315.39,-605.44 322.49,-601.35" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="324.42,-604.29 331.81,-596.71 321.3,-598.03 324.42,-604.29" style=""/>
+</g>
+<!-- BuidlHub.getAavePool -->
+<g id="node18" class="node" pointer-events="visible" data-name="BuidlHub.getAavePool">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1840" rx="60.84" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1835.8" font-family="Times,serif" font-size="14.00" style="">getAavePool</text>
+</g>
+<!-- _aavePoolAddressProvider.getPool -->
+<g id="node79" class="node" pointer-events="visible" data-name="_aavePoolAddressProvider.getPool">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-343" rx="40.59" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-338.8" font-family="Times,serif" font-size="14.00" style="">getPool</text>
+</g>
+<!-- BuidlHub.getAavePool&#45;&gt;_aavePoolAddressProvider.getPool -->
+<g id="edge28" class="edge" data-name="BuidlHub.getAavePool-&gt;_aavePoolAddressProvider.getPool">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M202.49,-1842.07C226.4,-1839.55 251.96,-1831.96 267.65,-1813 367.96,-1691.86 215.37,-528.16 303.65,-398 321.81,-371.22 355.91,-357.42 384.43,-350.34" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="385.28,-353.74 394.25,-348.1 383.72,-346.91 385.28,-353.74" style=""/>
+</g>
+<!-- BuidlHub.getAaveaToken -->
+<g id="node19" class="node" pointer-events="visible" data-name="BuidlHub.getAaveaToken">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2596" rx="72.33" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2591.8" font-family="Times,serif" font-size="14.00" style="">getAaveaToken</text>
+</g>
+<!-- BuidlHub.burn -->
+<g id="node20" class="node" pointer-events="visible" data-name="BuidlHub.burn">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-2704" rx="28.98" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2699.8" font-family="Times,serif" font-size="14.00" style="">burn</text>
+</g>
+<!-- BuidlHub._clearHandleHash -->
+<g id="node53" class="node" pointer-events="visible" data-name="BuidlHub._clearHandleHash">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-2866" rx="82.21" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-2861.8" font-family="Times,serif" font-size="14.00" style="">_clearHandleHash</text>
+</g>
+<!-- BuidlHub.burn&#45;&gt;BuidlHub._clearHandleHash -->
+<g id="edge30" class="edge" data-name="BuidlHub.burn-&gt;BuidlHub._clearHandleHash">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M170.83,-2706.25C196.97,-2709.22 236.51,-2715.95 267.65,-2731 324.71,-2758.56 379.16,-2809.77 408.9,-2840.58" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="406.48,-2843.12 415.91,-2847.95 411.55,-2838.29 406.48,-2843.12" style=""/>
+</g>
+<!-- MultiState.burn -->
+<g id="node80" class="node" pointer-events="visible" data-name="MultiState.burn">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-258" rx="28.98" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-253.8" font-family="Times,serif" font-size="14.00" style="">burn</text>
+</g>
+<!-- BuidlHub.burn&#45;&gt;MultiState.burn -->
+<g id="edge29" class="edge" data-name="BuidlHub.burn-&gt;MultiState.burn">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M170.41,-2706.93C199.58,-2708.31 244.53,-2705.21 267.65,-2677 350.91,-2575.41 230.48,-422.08 303.65,-313 323.92,-282.79 364.5,-269.1 394.67,-262.95" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="395.66,-266.32 404.86,-261.07 394.4,-259.44 395.66,-266.32" style=""/>
+</g>
+<!-- BuidlHub.back -->
+<g id="node21" class="node" pointer-events="visible" data-name="BuidlHub.back">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,81,102)" stroke-width="3" cx="141.83" cy="-2434" rx="29.03" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2429.8" font-family="Times,serif" font-size="14.00" style="">back</text>
+</g>
+<!-- FundingLogic.back -->
+<g id="node76" class="node" pointer-events="visible" data-name="FundingLogic.back">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-482" rx="29.03" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-477.8" font-family="Times,serif" font-size="14.00" style="">back</text>
+</g>
+<!-- BuidlHub.back&#45;&gt;FundingLogic.back -->
+<g id="edge31" class="edge" data-name="BuidlHub.back-&gt;FundingLogic.back">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M170.92,-2436.94C200.09,-2438.25 244.62,-2435 267.65,-2407 334.65,-2325.55 236.41,-590.25 303.65,-509 325.18,-482.99 364.8,-478.03 394.39,-478.48" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="394.28,-481.98 404.39,-478.84 394.53,-474.98 394.28,-481.98" style=""/>
+</g>
+<!-- BuidlHub.invest -->
+<g id="node22" class="node" pointer-events="visible" data-name="BuidlHub.invest">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,81,102)" stroke-width="3" cx="141.83" cy="-1570" rx="34.21" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1565.8" font-family="Times,serif" font-size="14.00" style="">invest</text>
+</g>
+<!-- FundingLogic.invest -->
+<g id="node77" class="node" pointer-events="visible" data-name="FundingLogic.invest">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-428" rx="34.21" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-423.8" font-family="Times,serif" font-size="14.00" style="">invest</text>
+</g>
+<!-- BuidlHub.invest&#45;&gt;FundingLogic.invest -->
+<g id="edge32" class="edge" data-name="BuidlHub.invest-&gt;FundingLogic.invest">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M175.5,-1573.03C204.52,-1573.72 245.63,-1569.39 267.65,-1543 345.15,-1450.13 225.88,-547.63 303.65,-455 324.09,-430.65 360.39,-424.82 389.21,-424.55" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="389.4,-428.05 399.45,-424.68 389.49,-421.05 389.4,-428.05" style=""/>
+</g>
+<!-- DataTypes.ProjectInvestor -->
+<g id="node81" class="node" pointer-events="visible" data-name="DataTypes.ProjectInvestor">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-173" rx="70.07" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-168.8" font-family="Times,serif" font-size="14.00" style="">ProjectInvestor</text>
+</g>
+<!-- BuidlHub.invest&#45;&gt;DataTypes.ProjectInvestor -->
+<g id="edge33" class="edge" data-name="BuidlHub.invest-&gt;DataTypes.ProjectInvestor">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M175.54,-1573.06C204.58,-1573.77 245.71,-1569.45 267.65,-1543 360.98,-1430.51 221.49,-348.89 303.65,-228 317.86,-207.09 341.79,-194.09 365.18,-186.02" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="366.32,-189.33 374.78,-182.96 364.19,-182.66 366.32,-189.33" style=""/>
+</g>
+<!-- BuidlHub.isProfileCreatorWhitelisted -->
+<g id="node23" class="node" pointer-events="visible" data-name="BuidlHub.isProfileCreatorWhitelisted">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2380" rx="117.47" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2375.8" font-family="Times,serif" font-size="14.00" style="">isProfileCreatorWhitelisted</text>
+</g>
+<!-- BuidlHub.isBackModuleWhitelisted -->
+<g id="node24" class="node" pointer-events="visible" data-name="BuidlHub.isBackModuleWhitelisted">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2326" rx="111.76" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2321.8" font-family="Times,serif" font-size="14.00" style="">isBackModuleWhitelisted</text>
+</g>
+<!-- BuidlHub.isInvestModuleWhitelisted -->
+<g id="node25" class="node" pointer-events="visible" data-name="BuidlHub.isInvestModuleWhitelisted">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2272" rx="115.77" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2267.8" font-family="Times,serif" font-size="14.00" style="">isInvestModuleWhitelisted</text>
+</g>
+<!-- BuidlHub.isERC20listed -->
+<g id="node26" class="node" pointer-events="visible" data-name="BuidlHub.isERC20listed">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2218" rx="66.68" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2213.8" font-family="Times,serif" font-size="14.00" style="">isERC20listed</text>
+</g>
+<!-- BuidlHub.defaultProfile -->
+<g id="node27" class="node" pointer-events="visible" data-name="BuidlHub.defaultProfile">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2164" rx="64.26" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2159.8" font-family="Times,serif" font-size="14.00" style="">defaultProfile</text>
+</g>
+<!-- BuidlHub.getGovernance -->
+<g id="node28" class="node" pointer-events="visible" data-name="BuidlHub.getGovernance">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2110" rx="69.47" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2105.8" font-family="Times,serif" font-size="14.00" style="">getGovernance</text>
+</g>
+<!-- BuidlHub.getProjectCount -->
+<g id="node29" class="node" pointer-events="visible" data-name="BuidlHub.getProjectCount">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2056" rx="73.59" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2051.8" font-family="Times,serif" font-size="14.00" style="">getProjectCount</text>
+</g>
+<!-- BuidlHub.getHandle -->
+<g id="node30" class="node" pointer-events="visible" data-name="BuidlHub.getHandle">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2002" rx="50.94" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1997.8" font-family="Times,serif" font-size="14.00" style="">getHandle</text>
+</g>
+<!-- BuidlHub.getProjectMetadataURI -->
+<g id="node31" class="node" pointer-events="visible" data-name="BuidlHub.getProjectMetadataURI">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1948" rx="102.99" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1943.8" font-family="Times,serif" font-size="14.00" style="">getProjectMetadataURI</text>
+</g>
+<!-- BuidlHub.getProfileIdByHandle -->
+<g id="node32" class="node" pointer-events="visible" data-name="BuidlHub.getProfileIdByHandle">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1894" rx="96.14" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1889.8" font-family="Times,serif" font-size="14.00" style="">getProfileIdByHandle</text>
+</g>
+<!-- BuidlHub.getProfileByHandle -->
+<g id="node33" class="node" pointer-events="visible" data-name="BuidlHub.getProfileByHandle">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2758" rx="88.05" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2753.8" font-family="Times,serif" font-size="14.00" style="">getProfileByHandle</text>
+</g>
+<!-- Errors.ProfileNotFound -->
+<g id="node62" class="node" pointer-events="visible" data-name="Errors.ProfileNotFound">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-266" rx="76.48" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-261.8" font-family="Times,serif" font-size="14.00" style="">ProfileNotFound</text>
+</g>
+<!-- BuidlHub.getProfileByHandle&#45;&gt;Errors.ProfileNotFound -->
+<g id="edge34" class="edge" data-name="BuidlHub.getProfileByHandle-&gt;Errors.ProfileNotFound">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M229.12,-2754.92C243.97,-2750.42 257.78,-2742.98 267.65,-2731 328.3,-2657.42 251.85,-1095.06 303.65,-1015 372.9,-907.97 492.15,-998.13 562.77,-892 599.68,-836.53 547.44,-343.61 590.77,-293 602.73,-279.03 619.79,-271.09 637.7,-266.79" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="638.6,-270.18 647.7,-264.76 637.21,-263.32 638.6,-270.18" style=""/>
+</g>
+<!-- BuidlHub.getProfile -->
+<g id="node34" class="node" pointer-events="visible" data-name="BuidlHub.getProfile">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1786" rx="49.23" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1781.8" font-family="Times,serif" font-size="14.00" style="">getProfile</text>
+</g>
+<!-- BuidlHub.getProjectIdsByHandle -->
+<g id="node35" class="node" pointer-events="visible" data-name="BuidlHub.getProjectIdsByHandle">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1732" rx="101.29" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1727.8" font-family="Times,serif" font-size="14.00" style="">getProjectIdsByHandle</text>
+</g>
+<!-- BuidlHub.getProjectByHandle -->
+<g id="node36" class="node" pointer-events="visible" data-name="BuidlHub.getProjectByHandle">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1678" rx="89.19" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1673.8" font-family="Times,serif" font-size="14.00" style="">getProjectByHandle</text>
+</g>
+<!-- BuidlHub.getProject -->
+<g id="node37" class="node" pointer-events="visible" data-name="BuidlHub.getProject">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1624" rx="50.38" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1619.8" font-family="Times,serif" font-size="14.00" style="">getProject</text>
+</g>
+<!-- BuidlHub.getYieldTrust -->
+<g id="node38" class="node" pointer-events="visible" data-name="BuidlHub.getYieldTrust">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-2488" rx="64.85" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-2483.8" font-family="Times,serif" font-size="14.00" style="">getYieldTrust</text>
+</g>
+<!-- FundingLogic.getYieldTrustHash -->
+<g id="node78" class="node" pointer-events="visible" data-name="FundingLogic.getYieldTrustHash">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-536" rx="84.54" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-531.8" font-family="Times,serif" font-size="14.00" style="">getYieldTrustHash</text>
+</g>
+<!-- BuidlHub.getYieldTrust&#45;&gt;FundingLogic.getYieldTrustHash -->
+<g id="edge35" class="edge" data-name="BuidlHub.getYieldTrust-&gt;FundingLogic.getYieldTrustHash">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M206.44,-2489.67C229.21,-2486.75 252.86,-2478.98 267.65,-2461 334.65,-2379.55 236.41,-644.25 303.65,-563 312.78,-551.97 325.16,-544.73 338.65,-540.08" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="340.03,-543.32 348.63,-537.13 338.05,-536.6 340.03,-543.32" style=""/>
+</g>
+<!-- BuidlHub.getAavePoolAddressProvider -->
+<g id="node39" class="node" pointer-events="visible" data-name="BuidlHub.getAavePoolAddressProvider">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1516" rx="125.65" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1511.8" font-family="Times,serif" font-size="14.00" style="">getAavePoolAddressProvider</text>
+</g>
+<!-- BuidlHub.getPriceFeed -->
+<g id="node40" class="node" pointer-events="visible" data-name="BuidlHub.getPriceFeed">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1462" rx="61.4" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1457.8" font-family="Times,serif" font-size="14.00" style="">getPriceFeed</text>
+</g>
+<!-- BuidlHub.tokenURI -->
+<g id="node41" class="node" pointer-events="visible" data-name="BuidlHub.tokenURI">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-1408" rx="49.24" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1403.8" font-family="Times,serif" font-size="14.00" style="">tokenURI</text>
+</g>
+<!-- BuidlHub.getBackModule -->
+<g id="node42" class="node" pointer-events="visible" data-name="BuidlHub.getBackModule">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-1354" rx="72.94" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1349.8" font-family="Times,serif" font-size="14.00" style="">getBackModule</text>
+</g>
+<!-- BuidlHub.getBackNFT -->
+<g id="node43" class="node" pointer-events="visible" data-name="BuidlHub.getBackNFT">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-1300" rx="60.84" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1295.8" font-family="Times,serif" font-size="14.00" style="">getBackNFT</text>
+</g>
+<!-- BuidlHub.getBackNFTURI -->
+<g id="node44" class="node" pointer-events="visible" data-name="BuidlHub.getBackNFTURI">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1246" rx="77.6" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1241.8" font-family="Times,serif" font-size="14.00" style="">getBackNFTURI</text>
+</g>
+<!-- TokenURILogic.getBackNFTTokenURI -->
+<g id="node82" class="node" pointer-events="visible" data-name="TokenURILogic.getBackNFTTokenURI">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-88" rx="102.44" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-83.8" font-family="Times,serif" font-size="14.00" style="">getBackNFTTokenURI</text>
+</g>
+<!-- BuidlHub.getBackNFTURI&#45;&gt;TokenURILogic.getBackNFTTokenURI -->
+<g id="edge36" class="edge" data-name="BuidlHub.getBackNFTURI-&gt;TokenURILogic.getBackNFTTokenURI">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M219.34,-1245.32C237.76,-1241.3 255.57,-1233.47 267.65,-1219 344.31,-1127.17 236.11,-241.73 303.65,-143 315.84,-125.18 335.07,-113.11 354.98,-104.94" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="356.36,-108.16 364.47,-101.34 353.88,-101.61 356.36,-108.16" style=""/>
+</g>
+<!-- BuidlHub.getInvestModule -->
+<g id="node45" class="node" pointer-events="visible" data-name="BuidlHub.getInvestModule">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-1192" rx="76.45" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1187.8" font-family="Times,serif" font-size="14.00" style="">getInvestModule</text>
+</g>
+<!-- BuidlHub.getInvestNFT -->
+<g id="node46" class="node" pointer-events="visible" data-name="BuidlHub.getInvestNFT">
+
+<ellipse fill="rgb(66,70,92)" stroke="rgb(66,70,92)" stroke-width="3" cx="141.83" cy="-1138" rx="64.86" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1133.8" font-family="Times,serif" font-size="14.00" style="">getInvestNFT</text>
+</g>
+<!-- BuidlHub.getInvestNFTURI -->
+<g id="node47" class="node" pointer-events="visible" data-name="BuidlHub.getInvestNFTURI">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1084" rx="81.12" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1079.8" font-family="Times,serif" font-size="14.00" style="">getInvestNFTURI</text>
+</g>
+<!-- TokenURILogic.getInvestNFTTokenURI -->
+<g id="node83" class="node" pointer-events="visible" data-name="TokenURILogic.getInvestNFTTokenURI">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="433.21" cy="-34" rx="105.96" ry="18" style=""/>
+<text text-anchor="middle" x="433.21" y="-29.8" font-family="Times,serif" font-size="14.00" style="">getInvestNFTTokenURI</text>
+</g>
+<!-- BuidlHub.getInvestNFTURI&#45;&gt;TokenURILogic.getInvestNFTTokenURI -->
+<g id="edge37" class="edge" data-name="BuidlHub.getInvestNFTURI-&gt;TokenURILogic.getInvestNFTTokenURI">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M222.88,-1082.47C240.01,-1078.24 256.34,-1070.52 267.65,-1057 338.73,-972.09 232.32,-145.7 303.65,-61 309.47,-54.09 316.56,-48.68 324.4,-44.45" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="325.96,-47.59 333.53,-40.18 322.99,-41.25 325.96,-47.59" style=""/>
+</g>
+<!-- BuidlHub.getBackNFTImpl -->
+<g id="node48" class="node" pointer-events="visible" data-name="BuidlHub.getBackNFTImpl">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-1030" rx="79.32" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-1025.8" font-family="Times,serif" font-size="14.00" style="">getBackNFTImpl</text>
+</g>
+<!-- BuidlHub.getInvestNFTImpl -->
+<g id="node49" class="node" pointer-events="visible" data-name="BuidlHub.getInvestNFTImpl">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-976" rx="82.83" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-971.8" font-family="Times,serif" font-size="14.00" style="">getInvestNFTImpl</text>
+</g>
+<!-- BuidlHub.getYieldTrustVaultImpl -->
+<g id="node50" class="node" pointer-events="visible" data-name="BuidlHub.getYieldTrustVaultImpl">
+
+<ellipse fill="rgb(66,74,95)" stroke="rgb(66,74,95)" stroke-width="3" cx="141.83" cy="-922" rx="104.23" ry="18" style=""/>
+<text text-anchor="middle" x="141.83" y="-917.8" font-family="Times,serif" font-size="14.00" style="">getYieldTrustVaultImpl</text>
+</g>
+<!-- Events.GovernanceSet -->
+<g id="node69" class="node" pointer-events="visible" data-name="Events.GovernanceSet">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-783" rx="70.05" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-778.8" font-family="Times,serif" font-size="14.00" style="">GovernanceSet</text>
+</g>
+<!-- BuidlHub._setGovernance&#45;&gt;Events.GovernanceSet -->
+<g id="edge38" class="edge" data-name="BuidlHub._setGovernance-&gt;Events.GovernanceSet">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M506.48,-3137.26C527.76,-3133.77 549.02,-3125.74 562.77,-3109 643.88,-3010.32 509.39,-908.45 590.77,-810 604.06,-793.93 624.08,-785.77 644.55,-781.96" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="645.25,-785.39 654.61,-780.42 644.2,-778.47 645.25,-785.39" style=""/>
+</g>
+<!-- BuidlHub.ownerOf -->
+<g id="node59" class="node" pointer-events="visible" data-name="BuidlHub.ownerOf">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-3109" rx="45.22" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-3104.8" font-family="Times,serif" font-size="14.00" style="">ownerOf</text>
+</g>
+<!-- BuidlHub._setDefaultProfile&#45;&gt;BuidlHub.ownerOf -->
+<g id="edge39" class="edge" data-name="BuidlHub._setDefaultProfile-&gt;BuidlHub.ownerOf">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M503.09,-3234.61C522.84,-3230.58 544.08,-3224.9 562.77,-3217 613.9,-3195.38 665.89,-3156.6 696.27,-3131.87" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="698.76,-3134.35 704.25,-3125.29 694.3,-3128.95 698.76,-3134.35" style=""/>
+</g>
+<!-- Errors.NotProfileOwner -->
+<g id="node63" class="node" pointer-events="visible" data-name="Errors.NotProfileOwner">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-428" rx="78.17" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-423.8" font-family="Times,serif" font-size="14.00" style="">NotProfileOwner</text>
+</g>
+<!-- BuidlHub._setDefaultProfile&#45;&gt;Errors.NotProfileOwner -->
+<g id="edge40" class="edge" data-name="BuidlHub._setDefaultProfile-&gt;Errors.NotProfileOwner">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M515.21,-3243.58C533.46,-3239.43 550.91,-3231.46 562.77,-3217 611.43,-3157.68 541.95,-514.18 590.77,-455 602.12,-441.25 618.4,-433.28 635.69,-428.88" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="636.9,-432.2 645.95,-426.69 635.44,-425.36 636.9,-432.2" style=""/>
+</g>
+<!-- Events.DefaultProfileSet -->
+<g id="node70" class="node" pointer-events="visible" data-name="Events.DefaultProfileSet">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-837" rx="78.73" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-832.8" font-family="Times,serif" font-size="14.00" style="">DefaultProfileSet</text>
+</g>
+<!-- BuidlHub._setDefaultProfile&#45;&gt;Events.DefaultProfileSet -->
+<g id="edge41" class="edge" data-name="BuidlHub._setDefaultProfile-&gt;Events.DefaultProfileSet">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M515.2,-3243.56C533.44,-3239.41 550.9,-3231.45 562.77,-3217 603.78,-3167.1 554.6,-945.51 590.77,-892 604.54,-871.63 627.41,-858.79 650.29,-850.7" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="651.65,-853.94 660.07,-847.52 649.48,-847.28 651.65,-853.94" style=""/>
+</g>
+<!-- Errors.NotGovernance -->
+<g id="node64" class="node" pointer-events="visible" data-name="Errors.NotGovernance">
+
+<ellipse fill="rgb(65,73,86)" stroke="rgb(65,73,86)" stroke-width="3" cx="724.05" cy="-482" rx="72.34" ry="18" style=""/>
+<text text-anchor="middle" x="724.05" y="-477.8" font-family="Times,serif" font-size="14.00" style="">NotGovernance</text>
+</g>
+<!-- BuidlHub._validateCallerIsGovernance&#45;&gt;Errors.NotGovernance -->
+<g id="edge42" class="edge" data-name="BuidlHub._validateCallerIsGovernance-&gt;Errors.NotGovernance">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M540.19,-3180.77C548.79,-3176.38 556.55,-3170.58 562.77,-3163 609.05,-3106.61 549.96,-597.47 590.77,-537 605.08,-515.8 629.24,-502.76 653.02,-494.74" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="654.29,-498.01 662.81,-491.7 652.22,-491.33 654.29,-498.01" style=""/>
+</g>
+<!-- BuidlHub._validateCallerIsProfileOwner&#45;&gt;BuidlHub.ownerOf -->
+<g id="edge43" class="edge" data-name="BuidlHub._validateCallerIsProfileOwner-&gt;BuidlHub.ownerOf">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M520.68,-2987.36C535.03,-2990.93 549.54,-2995.41 562.77,-3001 613.9,-3022.62 665.89,-3061.4 696.27,-3086.13" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="694.3,-3089.05 704.25,-3092.71 698.76,-3083.65 694.3,-3089.05" style=""/>
+</g>
+<!-- BuidlHub._validateCallerIsProfileOwner&#45;&gt;Errors.NotProfileOwner -->
+<g id="edge44" class="edge" data-name="BuidlHub._validateCallerIsProfileOwner-&gt;Errors.NotProfileOwner">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M541.68,-2963.99C549.69,-2959.69 556.91,-2954.14 562.77,-2947 606.7,-2893.5 546.69,-508.38 590.77,-455 602.13,-441.25 618.41,-433.29 635.7,-428.89" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="636.91,-432.21 645.96,-426.7 635.45,-425.37 636.91,-432.21" style=""/>
+</g>
+<!-- key -->
+<g id="node84" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="rgb(65,73,86)" stroke="rgba(46,62,86,0.9)" stroke-width="3" points="206.83,-3731 76.83,-3731 76.83,-3643 206.83,-3643 206.83,-3731" style=""/>
+<text text-anchor="start" x="126.46" y="-3712.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="122.57" y="-3692.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="100.03" y="-3672.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="86.43" y="-3652.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node85" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="rgb(65,73,86)" stroke="rgba(46,62,86,0.9)" stroke-width="3" points="460.21,-3731 406.21,-3731 406.21,-3643 460.21,-3643 460.21,-3731" style=""/>
+<text text-anchor="start" x="423.21" y="-3712.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="423.21" y="-3692.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="rgb(48,64,88)" stroke="rgba(46,62,86,0.9)" points="421.21,-3667 421.21,-3687 446.21,-3687 446.21,-3667 421.21,-3667" style=""/>
+<text text-anchor="start" x="423.21" y="-3672.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="rgb(64,67,88)" points="423.21,-3649 423.21,-3665 444.21,-3665 444.21,-3649 423.21,-3649" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge45" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="rgb(44,75,94)" stroke-width="2" d="M199.83,-3717C294.33,-3717 320.45,-3717 410.15,-3717" style=""/>
+<polygon fill="rgb(44,75,94)" stroke="rgb(44,75,94)" stroke-width="2" points="410.21,-3720.5 420.21,-3717 410.21,-3713.5 410.21,-3720.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge46" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="rgb(66,81,102)" stroke-width="2" d="M199.83,-3697C294.33,-3697 320.45,-3697 410.15,-3697" style=""/>
+<polygon fill="rgb(66,81,102)" stroke="rgb(66,81,102)" stroke-width="2" points="410.21,-3700.5 420.21,-3697 410.21,-3693.5 410.21,-3700.5" style=""/>
+</g>
+</g>
+</svg>

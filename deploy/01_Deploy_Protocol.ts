@@ -47,9 +47,18 @@ const deployFunction: DeployFunction = async (hre) => {
         nonce: deployerNonce++
     })
 
+    const tokenUriLogic = await deploy("TokenURILogic", {
+        from: deployer,
+        args: [],
+        log: true,
+        waitConfirmations: waitBlockConfirmations,
+        nonce: deployerNonce++
+    })
+
     const hubLibs = {
         "BuidlingLogic": buidlingLogic.address,
         "FundingLogic": fundingLogic.address,
+        "TokenURILogic": tokenUriLogic.address
     };
 
 
@@ -164,15 +173,15 @@ const deployFunction: DeployFunction = async (hre) => {
         waitConfirmations: waitBlockConfirmations
     });
 
-    const investErc20IcoModule = await deploy("InvestERC20ICOModule", {
-        from: deployer,
-        args: [
-            hubAddress,
-            erco20IcoAddress
-        ],
-        log: true,
-        waitConfirmations: waitBlockConfirmations
-    });
+    // const investErc20IcoModule = await deploy("InvestERC20ICOModule", {
+    //     from: deployer,
+    //     args: [
+    //         hubAddress,
+    //         erco20IcoAddress
+    //     ],
+    //     log: true,
+    //     waitConfirmations: waitBlockConfirmations
+    // });
 
     // const backRandomNftModule = await deploy("BackRandomNftModule", {
     //     from: deployer,
@@ -203,9 +212,10 @@ const deployFunction: DeployFunction = async (hre) => {
         erco20IcoAddress,
         "buidling-logic-lib": buidlingLogic.address,
         "funding-logic-lib": fundingLogic.address,
+        "token-uri-logic-lib": tokenUriLogic.address,
         backerOnlyInvestModule: backerOnlyInvestModule.address,
         backErc20IcoModule: backErc20IcoModule.address,
-        investErc20IcoModule: investErc20IcoModule.address,
+        // investErc20IcoModule: investErc20IcoModule.address,
         // backRandomNftModule,
         // investRandomNftModule,
     };

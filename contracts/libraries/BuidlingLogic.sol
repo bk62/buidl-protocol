@@ -30,6 +30,7 @@ library BuidlingLogic {
 
         _profileById[profileId].handle = vars.handle;
         _profileById[profileId].metadataURI = vars.metadataURI;
+        _profileById[profileId].githubUsername = vars.githubUsername;
 
         bytes memory backModuleReturnData;
         if (vars.backModule != address(0)) {
@@ -39,6 +40,12 @@ library BuidlingLogic {
                 vars.backModule,
                 vars.backModuleInitData,
                 _backModuleWhitelisted
+            );
+            emit Events.BackModuleSet(
+                profileId,
+                vars.backModule,
+                backModuleReturnData,
+                block.timestamp
             );
         }
 
@@ -96,6 +103,7 @@ library BuidlingLogic {
 
         _projectByIdByProfile[vars.profileId][projectId].metadataURI = vars.metadataURI;
         _projectByIdByProfile[vars.profileId][projectId].handle = vars.handle;
+        _projectByIdByProfile[vars.profileId][projectId].githubRepoName = vars.githubRepoName;
 
         // invest module init
         bytes memory investModuleReturnData = _initInvestModule(

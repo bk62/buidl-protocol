@@ -67,6 +67,6 @@ contract BackNFT is NFTBaseUpgradeable, IBackNFT {
      */
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         if (!_exists(tokenId)) revert Errors.TokenDoesNotExist();
-        return IBuidlHub(hub).getBackNFTURI(_profileId);
+        return IBuidlHub(hub).getBackNFTURI(_profileId, tokenId);
     }
 }

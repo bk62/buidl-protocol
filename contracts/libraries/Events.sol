@@ -69,6 +69,8 @@ library Events {
         uint256 value,
         address[] erc20s,
         uint256[] amounts,
+        uint256 backNftTokenId,
+        address backNft,
         uint256 timestamp
     );
 
@@ -94,8 +96,10 @@ library Events {
         uint256 value,
         address[] erc20s,
         uint256[] amounts,
+        uint256 investNftTokenId,
         uint256 timestamp
     );
+    // address investNft,
     event InvestNFTTransferred(
         uint256 indexed profileId,
         uint256 indexed projectId,

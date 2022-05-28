@@ -11,6 +11,7 @@ import {DataTypes} from "../libraries/DataTypes.sol";
 import {Errors} from "../libraries/Errors.sol";
 import {BuidlingLogic} from "../libraries/BuidlingLogic.sol";
 import {FundingLogic} from "../libraries/FundingLogic.sol";
+import {TokenURILogic} from "../libraries/TokenURILogic.sol";
 import {NFTBase} from "./base/NFTBase.sol";
 import {MultiState} from "./base/MultiState.sol";
 import {BuidlHubStorage} from "./storage/BuidlHubStorage.sol";
@@ -296,7 +297,7 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
             FundingLogic.invest(
                 DataTypes.ProjectInvestor(profileId, projectId, msg.sender),
                 investModuleData,
-                investNFTImpl,
+                // investNFTImpl,
                 erc20s,
                 amounts,
                 _profileById,
@@ -468,8 +469,21 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     }
 
     /// @inheritdoc IBuidlHub
-    function getBackNFTURI(uint256 profileId) external view override returns (string memory) {
-        return _profileById[profileId].metadataURI;
+    function getBackNFTURI(uint256 profileId, uint256 tokenId)
+        external
+        view
+        override
+        returns (string memory)
+    {
+        // return _profileById[profileId].metadataURI;
+        return
+            TokenURILogic.getBackNFTTokenURI(
+                profileId,
+                tokenId,
+                _profileById[profileId].handle,
+                _profileById[profileId].metadataURI,
+                _profileById[profileId].githubUsername
+            );
     }
 
     /// @inheritdoc IBuidlHub
@@ -493,13 +507,24 @@ contract BuidlHub is IBuidlHub, BuidlHubStorage, NFTBase, MultiState {
     }
 
     /// @inheritdoc IBuidlHub
-    function getInvestNFTURI(uint256 profileId, uint256 projectId)
-        external
-        view
-        override
-        returns (string memory)
-    {
-        return _projectByIdByProfile[profileId][projectId].metadataURI;
+    function getInvestNFTURI(
+        uint256 profileId,
+        uint256 projectId,
+        uint256 tokenId
+    ) external view override returns (string memory) {
+        // return _projectByIdByProfile[profileId][projectId].metadataURI;
+        return
+            TokenURILogic.getInvestNFTTokenURI(
+                // profileId,
+                // projectId,
+                tokenId,
+                _profileById[profileId].handle,
+                _projectByIdByProfile[profileId][projectId].handle,
+                _profileById[profileId].metadataURI,
+                _projectByIdByProfile[profileId][projectId].metadataURI,
+                _profileById[profileId].githubUsername,
+                _projectByIdByProfile[profileId][projectId].githubRepoName
+            );
     }
 
     /// @inheritdoc IBuidlHub

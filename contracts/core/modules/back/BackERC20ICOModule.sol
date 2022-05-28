@@ -13,6 +13,8 @@ import {ERC20ICO} from "../ERC20ICO.sol";
 import {ERCICOModuleBase} from "../ERC20ICOModuleBase.sol";
 import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
+// import "hardhat/console.sol";
+
 /**
  * @notice Back module that mints ERC20 tokens to backers based on amount and configuration.
  */
@@ -45,6 +47,7 @@ contract BackERC20ICOModule is
             data,
             (string, string, uint256)
         );
+        // console.log("init: decoded data, price is %s", tokenUsdPrice);
         if (tokenUsdPrice == 0) revert Errors.InitializerParamsInvalid();
 
         // deploy profile specific erc20 contract
@@ -54,7 +57,7 @@ contract BackERC20ICOModule is
         _mappingERC20ByProfile[profileId] = erc20;
         _mappingTokenUsdPriceByProfile[profileId] = tokenUsdPrice;
 
-        return data;
+        return abi.encode(name, symbol, tokenUsdPrice, address(erc20));
     }
 
     /**
@@ -65,25 +68,32 @@ contract BackERC20ICOModule is
         uint256 profileId,
         bytes calldata data
     ) external override {
+        // console.log("module process");
         // mint tokens to backer
         ERC20ICO erc20 = _mappingERC20ByProfile[profileId];
         if (address(erc20) == address(0)) revert Errors.TokenDoesNotExist();
         if (data.length == 0) revert Errors.InvalidModuleArgs();
 
+        // console.log("decoding currency");
         // TODO
         // assuming single currency payment here -- but hub supports multi currencies + native in 1 txn!!
-        (address paymentCurrency, bool nativeCurrency, uint256 amount) = abi.decode(
-            data,
-            (address, bool, uint256)
-        );
+        (address paymentCurrency, bool nativeCurrency, uint256 amount, address receiver) = abi
+            .decode(data, (address, bool, uint256, address));
 
+        // console.log("paymentCurrency %s, native %s", paymentCurrency, nativeCurrency);
+
+        // console.log("Getting price feed");
         address priceFeedAddr = IBuidlHub(hub).getPriceFeed(paymentCurrency, nativeCurrency);
+        // console.log("got price feed %s", priceFeedAddr);
         uint256 price = _getLatestPrice(priceFeedAddr);
+        // console.log("got price %s", price);
+
         uint256 tokenUsdPrice = _mappingTokenUsdPriceByProfile[profileId];
         // e.g. 10 link * 20 $/link / (2 $/token) = 100 tokens
         uint256 mintAmount = (amount * price) / tokenUsdPrice;
-
-        _mint(erc20, _msgSender(), mintAmount);
+        // console.log("minting amount, %s * %s / tokenUsdPrice = %s", amount, price, mintAmount);
+        // console.log("minting to %s", receiver);
+        _mint(erc20, receiver, mintAmount);
     }
 
     function moduleNFTTransferHook(

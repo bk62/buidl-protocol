@@ -64,6 +64,6 @@ contract InvestNFT is NFTBaseUpgradeable, IInvestNFT {
      */
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         if (!_exists(tokenId)) revert Errors.TokenDoesNotExist();
-        return IBuidlHub(hub).getInvestNFTURI(_profileId, _projectId);
+        return IBuidlHub(hub).getInvestNFTURI(_profileId, _projectId, tokenId);
     }
 }
